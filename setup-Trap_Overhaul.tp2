@@ -1,0 +1,1082 @@
+	BACKUP ~weidu_backup\Trap_Overhaul~ 
+	AUTHOR ~none~ 
+	VERSION ~0.20~
+	
+	ALWAYS
+		DEFINE_DIMORPHIC_FUNCTION	I2H	INT_VAR	int = 0	pad = 0	RET	hex	BEGIN
+			OUTER_PATCH_SAVE	hex ~00000000~	BEGIN	DEFINE_ARRAY	h	BEGIN	0 1 2 3 4 5 6 7 8 9 A B C D E F END
+				FOR	(i = 7; i > 0; --i)	BEGIN	SET	h = int / (16 ** i)	WRITE_ASCIIE	(7 - i) $h(~%h%~) #1	END
+				SET	h = int REM 16	WRITE_ASCIIE	7 $h(~%h%~) #1	REPLACE_TEXTUALLY	~^0+~ ~~	END
+			OUTER_WHILE pad > STRING_LENGTH ~%hex%~	BEGIN	OUTER_SPRINT hex ~0%hex%~	END
+		END
+		DEFINE_DIMORPHIC_FUNCTION	H2I	STR_VAR	hex = ~~	RET	int	BEGIN	ACTION_TO_UPPER	hex
+			OUTER_PATCH_SAVE	n ~%hex%~	BEGIN	REPLACE_TEXTUALLY	~0x~ ~~	DEFINE_ARRAY	h	BEGIN	0 1 2 3 4 5 6 7 8 9 END	SET	int = 0
+				SET	$h(A) = 10	SET	$h(B) = 11	SET	$h(C) = 12	SET	$h(D) = 13	SET	$h(E) = 14	SET	$h(F) = 15	SET	l = STRING_LENGTH ~%BUFFER%~
+				FOR	(i = l; i > 0; --i)	BEGIN	READ_ASCII	(i - 1) h (1)	SET	int += $h(~%h%~) * (16 ** (l - i))	END
+			END
+		END
+		DEFINE_ACTION_FUNCTION	ADD_SPLSTATE	STR_VAR	label = ~~	new_ids = ~*~	s = EVAL ~ %TAB%~	w = EVAL ~ %TAB%%WNL%$~	RET	new_ids		BEGIN
+			ACTION_MATCH	1	WITH	ANY (~%label%~ STR_EQ ~~)	BEGIN	FAIL	~Missing Spell State label~	END
+				ANY	!(~%label%~ STRING_CONTAINS_REGEXP ~[ %TAB%%WNL%]~)	BEGIN	FAIL	~Spell State lable cannot have whitespace~	END
+				ANY	FILE_CONTAINS_EVALUATED	(~SPLSTATE.IDS~	~^\(0x[0-9a-f]+\|[0-9]+\)[%s%]+%label%[%w%]~)	BEGIN
+					COPY_EXISTING - ~SPLSTATE.IDS~	override	REPLACE_EVALUATE	~^\(0x[0-9a-f]+\|[0-9]+\)[%s%]%label%[%w%]~	BEGIN	SET	new_ids = MATCH1	END	~~	END
+			DEFAULT
+				COPY_EXISTING	~SPLSTATE.IDS~	override
+					DEFINE_ARRAY	x	BEGIN	~~ 1 2 3 4 5 6 7 8 9 A B C D E F END	DEFINE_ARRAY	y	BEGIN	0 1 2 3 4 5 6 7 8 9 A B C D E F END
+					FOR	(i = 0; i < 256; ++i)	BEGIN	LPF	I2H	INT_VAR	int = i	RET	hex	END	//	SET	x = i / 16	SET	y = i REM 16	SPRINT	h EVAL ~%x_%x%%%y_%y%%~
+						PATCH_IF !FILE_CONTAINS_EVALUATED (~SPLSTATE.IDS~ ~^\(%i%\|0x0*%hex%\)[%s%]+[^%w%]+[%w%]~) BEGIN INSERT_2DA_ROW	i 2	~%i% %label%~	SET	new_ids = i	SET	i = 256	END
+					END
+					PATCH_IF	!IS_AN_INT new_ids	BEGIN	PATCH_FAIL	~No Spell States available~	END
+				BUT_ONLY
+			END
+		END
+		DEFINE_ACTION_FUNCTION	~COMPONENT$$MAIN~	BEGIN	SILENT
+			ACTION_MATCH	~%EE_LANGUAGE%~ WITH
+				DEFAULT	<<<<<<<< .../inlined.tra
+	@1000= ~Trap~
+	@1001= ~%name_ref% Trap~
+	@1002= ~This trap contains the necessary materials to launch a %name_ref% spell when triggered by an enemy creature within 4ft.
+
+%desc_ref%~
+	@1003= ~Unknown~
+	@1004= ~This trap contains the necessary materials to launch a weapon or spell when triggered by an enemy creature within 4ft.~
+	@1005= ~Lock Pick Succeeded~
+	@19010= ~Glyph of Wardning Trap~
+	@19011= ~This trap contains the necessary materials to launch a level 9 Glyph of Warding spell when triggered by an enemy creature within 4ft.
+
+Glyph of Warding
+(Abjuration, Evocation)
+
+Level: 3
+Sphere: Protection
+Range: Visual range of the caster
+Duration: Special
+Area of Effect: 12-ft. radius
+Saving Throw: 1/2
+
+A glyph of warding is a powerful inscription, magically drawn to prevent unauthorized or hostile creatures from passing, entering, or opening. It can be used to guard a small bridge, to ward an entry, or as a trap on a chest or box. Any creature violating the warded area sets off the glyph. The glyph deals 1d4 points of electrical damage per level of the caster to the victim(s). A successful Save vs. Spell halves the damage. Leaving the area the glyph of warding is in will make it disappear harmlessly.~
+	@19820= ~Dire Charm Trap~
+	@19821= ~This trap contains the necessary materials to launch a Dire Charm spell when triggered by an enemy creature within 4ft.
+
+Dire Charm
+(Enchantment/Charm)
+
+Level: 0
+Range: 60 ft.
+Duration: 5 rounds
+Area of Effect: 1 creature
+Saving Throw: Neg. 
+
+This spell works in the exact same manner as Charm Person, with one difference: There is no Saving Throw bonus. Dire Charm affects any single person it is cast upon. The term person includes any bipedal human, demihuman, or humanoid of man-size or smaller, such as brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level fighter could be charmed, but an ogre could not. The person is allowed a Saving Throw vs. Spell to negate the effect.
+
+If the spell's recipient fails <PRO_HISHER> Saving Throw, <PRO_HESHE> regards the caster as a trusted friend and ally to be heeded and protected. The caster may give <PRO_HIMHER> orders, and the charmed individual will carry them out as quickly as possible.
+
+If the caster harms—or attempts to harm—the charmed person by some overt action, or if a Dispel Magic spell is cast upon the charmed person, the Dire Charm spell is broken. If two or more Charms simultaneously affect a creature, the most recent Charm takes precedence. Note that the subject has full memory of the events that took place while <PRO_HESHE> was charmed. Also note that you cannot have a charmed creature leave the area where <PRO_HESHE> is charmed.~
+	@19830= ~Confusion Trap~
+	@19831= ~This trap contains the necessary materials to launch a Confusion spell when triggered by an enemy creature within 4ft.
+
+Confusion
+(Enchantment/Charm)
+
+Level: 4
+Range: 35 ft.
+Duration: 5 rounds + 1 round/6 levels
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+This spell causes confusion in one or more enemy creatures within the area, creating indecision and the inability to take effective action. All enemy creatures within the area of effect are allowed Saving Throw vs. Spell with a -2 penalty. Those successfully saving are unaffected by the spell, whereas those who fail their Saving Throws will either go berserk, stand confused, or wander about for the duration of the spell. Wandering creatures move as far from the caster as possible, according to their most typical mode of movement (characters walk, fish swim, bats fly, etc.). Any confused creature that is attacked perceives the attacker as an enemy and acts according to its basic nature. The spell lasts for 5 rounds plus 1 round every 6 levels of the caster.~
+	@19840= ~Chromatic Orb Trap~
+	@19841= ~This trap contains the necessary materials to launch a Chromatic Orb spell when triggered by an enemy creature within 4ft.
+
+Chromatic Orb 
+(Evocation)
+
+Level: 1
+Range: 90 ft.
+Duration: Special
+Casting Time: 1
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell causes a 2-ft. diameter sphere to appear in the caster's hand. When thrown, the sphere heads unerringly to its target. The orb will deal 2d8 magic damage to the target against which there is no save and stun the victim for 2 turns against which the target must save vs. Spell with a +6 bonus.~
+	@19842= ~Flame Strike Trap~
+	@19843= ~This trap contains the necessary materials to launch a Flame Strike spell when triggered by an enemy creature within 4ft.
+
+Flame Strike
+(Evocation)
+
+Level: 5
+Sphere: Combat
+Range: Visual range of the caster
+Duration: Instant
+Area of Effect: 5-ft. radius
+Saving Throw: 1/2
+
+When the priest casts Flame Strike, a vertical column of fire roars downward onto a victim chosen by the caster. The spell deals 6d8 points of fire damage to the target and any nearby victims, with a Save vs. Spell for half damage.~
+	@19850= ~Flame Strike Trap~
+	@19851= ~This trap contains the necessary materials to launch a level 8 Flame Strike spell when triggered by an enemy creature within 4ft.
+
+Flame Strike
+(Evocation)
+
+Level: 5
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: 1/2 
+
+When the priest calls down a Flame Strike spell, a vertical column of fire roars downward in the exact location called for by the caster. The target must roll a Saving Throw vs. Spell. Failure means the creature sustains 1d8 points of damage per level of the caster; otherwise, the damage is halved.~
+	@19860= ~Miscast Magic Trap~
+	@19861= ~This trap contains the necessary materials to launch a Miscast Magic spell when triggered by an enemy creature within 4ft.
+
+Miscast Magic
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster 
+Duration: 1 turn
+Area of Effect: 1 target 
+Saving Throw: Neg. 
+
+Any spellcasting creature that is affected by this spell has its casting ability severely disabled. When the creature attempts to cast a spell, it suffers an 80% chance of failure. Creatures can save vs. Spell to avoid the effect, but do so with a -2 penalty.~
+	@19870= ~Call Lightning Trap~
+	@19871= ~This trap contains the necessary materials to launch a level 8 Call Lightning spell when triggered by an enemy creature within 4ft.
+
+Call Lightning
+(Alteration)
+
+Level: 3
+Range: 80 ft.
+Duration: 1 turn/4 levels
+Area of Effect: 360-ft. radius 
+Saving Throw: 1/2
+
+Call Lightning must be cast outside; otherwise, it will not work, and the spell is wasted. The caster is able to call down one bolt of lightning per turn. The spell has a duration of 1 turn every 4 levels of the caster. Each bolt causes 2d8 points of electrical damage, plus an additional 1d8 points per level of the caster. Thus, an 8th-level caster will call down two bolts, each dealing 10d8 (2d8 + 8d8) points of damage. The bolt of lightning flashes down in a vertical stroke at any of the priest's enemies. The first enemy struck by the lightning will be the enemy targeted. After that, any enemy (but no allies) may be struck by the ensuing lightning storm.~
+	@19880= ~Silence Trap~
+	@19881= ~This trap contains the necessary materials to launch a Silence spell when triggered by an enemy creature within 4ft.
+
+Silence
+(Alteration)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 2 rounds/level
+Area of Effect: 1 Creature
+Saving Throw: Neg. 
+
+Upon casting this spell, complete silence prevails over the targeted creature. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Saving Throw vs. Spell with a -5 penalty; if the save is failed then they are silenced for the duration of the spell. ~
+	@19880= ~Silence, 15' Radius Trap~
+	@19881= ~This trap contains the necessary materials to launch a Silence, 15' Radius spell when triggered by an enemy creature within 4ft.
+
+Silence, 15' Radius
+(Alteration)
+
+Level: 2
+Sphere: Guardian
+Range: Visual range of the caster
+Duration: 2 rounds/level
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+Upon casting this spell, complete silence prevails in the affected area. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Save vs. Spell; if the save is failed, they are silenced for the duration of the spell. Affected creatures leaving the area are still subject to the spell's effect; those entering the area after the casting is completed are not.~
+	@19890= ~Hold Person Trap~
+	@19891= ~This trap contains the necessary materials to launch a Hold Person spell when triggered by an enemy creature within 4ft.
+
+Hold Person
+(Enchantment/Charm)
+
+Level: 3
+Range: 35 ft.
+Duration: 1 turn
+Area of Effect: 1 creature
+Saving Throw: Neg. 
+
+This spell holds a single humanoid creature rigidly immobile and in place for five or more rounds. The Hold Person spell affects any bipedal human, demihuman, or humanoid of mansize or smaller, including brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level fighter could be held, while an ogre could not.  Those who save vs. Spell at -1 are totally unaffected by the spell. Undead creatures cannot be held.
+
+Held creatures cannot move or speak, but they remain aware of events around them and can use abilities not requiring motion or speech. Being held does not prevent the worsening of the subjects' condition due to wounds, disease, or poison.~
+	@19892= ~Hold Person Trap~
+	@19893= ~This trap contains the necessary materials to launch a level 8 Hold Person spell when triggered by an enemy creature within 4ft.
+
+Hold Person
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster
+Duration: 1 round/level
+Area of Effect: Special
+Saving Throw: Neg.
+
+This spell holds 1d4 humans, demihumans, or humanoid creatures immobile for 6 rounds or longer. Specifically, it affects the targeted enemy and up to 3 hostile creatures within 20 ft. of it. Affected creatures must be living bipedal humans, demihumans, and humanoids of man size or smaller, including dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, lizard men, orcs, troglodytes, and others. Thus, a 10th-level Fighter could be held, while an ogre could not. A successful Save vs. Spell negates the effect.
+
+Paralyzed creatures are helpless and cannot dodge or defend themselves from attacks. Being held does not prevent the worsening of the subject's condition due to wounds, disease, or poison.~
+	@20010= ~Fireball Trap~
+	@20011= ~This trap contains the necessary materials to launch a level 10 Fireball spell when triggered by an enemy creature within 4ft.
+
+Fireball
+(Evocation)
+
+Level: 3
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 15-ft. radius
+Saving Throw: 1/2 
+
+A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster (up to a maximum of 10d6). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their Saving Throws each suffer full damage from the blast. Those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each receiving half.~
+	@20020= ~Lightning Bolt Trap~
+	@20021= ~This trap contains the necessary materials to launch a level 10 Lightning Bolt spell when triggered by an enemy creature within 4ft.
+
+Lightning Bolt
+(Evocation) 
+
+Level: 3
+Range: 70 ft.
+Duration: Instant
+Area of Effect: Path of bolt
+Saving Throw: 1/2
+
+Upon casting this spell, the wizard releases a powerful stroke of electrical energy that inflicts 1d6 points of damage per level of the caster (maximum damage of 10d6) to each creature within its area of effect. A successful Saving Throw vs. Spell reduces this damage to half (round fractions down). If the lightning bolt intersects with a wall, it will bounce until it reaches its full length.~
+	@20030= ~Magic Missile Trap~
+	@20031= ~This trap contains the necessary materials to launch a level 5 Magic Missile spell when triggered by an enemy creature within 4ft.
+
+Magic Missile
+(Evocation)
+
+Level: 1
+Range: 30ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: None 
+
+Use of the Magic Missile spell, one of the most popular 1st-level spells, creates up to five missiles of magical energy that dart forth from the wizard's fingertip and unerringly strike their target, which must be a creature of some sort. Each missile inflicts 1d4+1 points of damage. For every 2 extra levels of experience, the wizard gains an additional missile—<PRO_HESHE> has 2 at 3rd level, 3 at 5th level, 4 at 7th level, up to a total of 5 at 9th level.~
+	@20040= ~Stinking Cloud Trap~
+	@20041= ~This trap contains the necessary materials to launch a Stinking Cloud spell when triggered by an enemy creature within 4ft.
+
+Stinking Cloud
+(Evocation)
+
+Level: 2
+Range: 90 ft.
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+When casting a Stinking Cloud spell, the wizard creates a billowing mass of nauseous vapors up to 90 ft. away from <PRO_HISHER> position. Any creature caught within the cloud must roll a successful Saving Throw vs. Poison at +2 or be sent reeling and fall down for 1d2 rounds. Those who make successful Saving Throws can leave the cloud without suffering any ill effects, although those remaining in the cloud must continue to save each round. A Dispel Magic will remove the nausea on a particular character, but if they remain in the cloud, then they are still subject to its effects.~
+	@20050= ~Arrow of Piercing Trap~
+	@20051= ~This trap contains the necessary materials to launch a Arrow of Piercing when triggered.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 2d6 (piercing)~
+	@20060= ~Arrow of Slaying Trap~
+	@20061= ~This trap contains the necessary materials to launch an Arrow of Slaying when triggered by an enemy creature within 4ft.
+
+Arrow of Slaying: This arrow is twisted and black, almost radiating evil as if possessed by something larger than itself. It was made to kill any type of creature.
+
+STATISTICS:
+
+Combat abilities:
+– Slay creature upon touch
+
+Damage: 1d6 (piercing)~
+	@20062= ~Shocking Arrow Trap~
+	@20063= ~This trap contains the necessary materials to launch an Shocking Arrow when triggered by an enemy creature within 4ft.
+
+Arrow of Slaying: This arrow seems to crackle with energy as it is held in the hand. When shot, it seems to leap towards its target, leaving behind an electrical sulfuric smell. As it hits, there is a crackle as the energy stored is released into the target's wound.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +2d6 electrical damage~
+	@20070= ~Acid Arrow Trap~
+	@20071= ~This trap contains the necessary materials to launch an Acid Arrow when triggered by an enemy creature within 4ft.
+
+Acid Arrow: This arrow is coated in acid. When it strikes an enemy, it not only pierces flesh but also eats it away, enlarging and deepening the wound.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +2d6 acid damage~
+	@20080= ~Arrow of Biting Trap~
+	@20081= ~This trap contains the necessary materials to launch an Arrow of Biting when triggered by an enemy creature within 4ft.
+
+Arrow of Biting: The Arrow of Biting was designed as a deadly compliment to the archer. Poison smeared on the barbed arrowhead infiltrates the bloodstream of its victims, causing agony and often death.
+
+STATISTICS:
+
+Combat abilities:
+– Target must save vs. Death or lose 30% of its maximum Hit Points within 20 seconds
+
+Damage: 1d6 (missile)~
+	@20090= ~Arrow of Detonation Trap~
+	@20091= ~This trap contains the necessary materials to launch an Arrow of Detonation when triggered by an enemy creature within 4ft.
+
+Arrow of Detonation: This arrow has a particularly debilitating effect on its victims as, upon impact, it explodes into a huge ball of fire and shrapnel affecting all within the area.
+
+STATISTICS:
+
+Combat abilities:
+– 15ft. radius explosion on impact
+
+Damage: 1d6 (piercing), + 6d6 fire damage (Save vs. Spell for half)~
+	@20092= ~Arrow of Detonating Trap~
+	@20093= ~This trap contains the necessary materials to launch an Arrow of Detonating when triggered by an enemy creature within 4ft.
+
+Arrow of Detonating: This arrow has a particularly debilitating effect on its victims as, upon impact, it explodes into a small ball of fire and shrapnel within the target.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), + 6d6 fire damage (Save vs. Spell for half)~
+	@20100= ~Arrow of Dispelling Trap~
+	@20101= ~This trap contains the necessary materials to launch an Arrow of Dispelling when triggered by an enemy creature within 4ft.
+
+Arrow of Dispelling: This arrow will remove the magical enchantments that its victim is surrounded by.
+
+STATISTICS:
+
+Combat abilities:
+– Dispel Magic on target when hit
+
+Damage: 1d6 (piercing)~
+	@20110= ~Arrow of Fire Trap~
+	@20111= ~This trap contains the necessary materials to launch an Arrow of Fire when triggered by an enemy creature within 4ft.
+
+Arrow of Fire: This is a magical arrow that will burst into flames as it is fired at an enemy. The effect is similar to an arrow doused in oil and set to flame.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 fire damage (Save vs. Spell for none)~
+	@20120= ~Arrow of Ice Trap~
+	@20121= ~This trap contains the necessary materials to launch an Arrow of Ice when triggered by an enemy creature within 4ft.
+
+Arrow of Ice: This arrow is magically enhanced so as to burst into a rolling ball of ice and cold when fired. When the arrow strikes its victim, a shock of cold will travel through its body, both burning and numbing to the very core.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 cold damage~
+	@20122= ~Arrow of Ice Trap~
+	@20123= ~This trap contains the necessary materials to launch an Arrow of Ice when triggered by an enemy creature within 4ft.
+
+Arrow of Ice: This arrow is magically enhanced so as to burst into a rolling ball of ice and cold when fired. When the arrow strikes its victim, a shock of cold will travel through its body, both burning and numbing to the very core.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 cold damage (Save vs. Spell for none)~
+	@20130= ~Arrow of Piercing Trap~
+	@20131= ~This trap contains the necessary materials to launch an Arrow of Piercing when triggered by an enemy creature within 4ft.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 1d6+6 (piercing)~
+	@20132= ~Arrow of Piercing Trap~
+	@20133= ~This trap contains the necessary materials to launch an Arrow of Piercing when triggered by an enemy creature within 4ft.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 1d6 (missile), +6 piercing (Save vs. Death for none)~
+	@20140= ~Monster Summoning I Trap~
+	@20141= ~This trap contains the necessary materials to launch a Monster Summoning I spell when triggered by an enemy creature within 4ft.
+
+Monster Summoning I 
+(Conjuration/Summoning)
+
+Level: 3
+Range: 120 ft. 
+Duration: 2 rounds + 1 round/level
+Area of Effect: Special 
+Saving Throw: None 
+
+With the casting of this spell, the wizard summons a random selection of 3-HD monsters. There is a 60% chance of receiving one monster and a 40% chance of receiving two monsters. The monster(s) appear within spell range and attack the spellcaster's opponents until the spell duration expires or until they are slain.~
+	@20150= ~Frost Trap~
+	@20151= ~This trap contains the necessary materials to launch a Column of Ice spell when triggered by an enemy creature within 4ft.
+
+Column of Ice
+(Evocation)
+
+Level: 5
+Range: 100 ft. 
+Duration: Instant
+Area of Effect: 1 creature 
+Saving Throw: Wand (Negate)
+
+White crystalline motes spray forth in a column towards the victim, striking them square in the chest with numbing force. The temperature inside the column is deadly, and damage is 16d3 with a Save vs. Wand for half.~
+	@20160= ~Cloudkill Trap~
+	@20161= ~This trap contains the necessary materials to launch a Cloudkill spell when triggered by an enemy creature within 4ft.
+
+Cloudkill
+(Evocation)
+
+Level: 5
+Range: 40 ft.
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Special
+
+This spell generates a billowing cloud of ghastly, yellowish green vapors that is so toxic as to slay any creature with 4 or fewer Hit Dice, and causes creatures with 5 to 6 Hit Dice to roll Saving Throws vs. Poison with a -4 penalty or be slain. Holding one's breath has no effect on the lethality of the spell. Those above 6th level (or 6 Hit Dice) must leave the cloud immediately or suffer 1d10 points of poison damage each round while in the area of effect.~
+	@20170= ~Minor Lightning Bolt Trap~
+	@20171= ~This trap contains the necessary materials to launch a level 6 Lightning Bolt spell when triggered by an enemy creature within 4ft.
+
+Lightning Bolt
+(Evocation) 
+
+Level: 3
+Range: 70 ft.
+Duration: Instant
+Area of Effect: Path of bolt
+Saving Throw: 1/2
+
+Upon casting this spell, the wizard releases a powerful stroke of electrical energy that inflicts 1d6 points of damage per level of the caster (maximum damage of 10d6) to each creature within its area of effect. A successful Saving Throw vs. Spell reduces this damage to half (round fractions down). If the lightning bolt intersects with a wall, it will bounce until it reaches its full length.~
+	@20180= ~Frost Trap~
+	@20181= ~This trap contains the necessary materials to launch a Column of Ice spell when triggered by an enemy creature within 4ft.
+
+Column of Ice
+(Evocation)
+
+Level: 5
+Range: 100 ft. 
+Duration: Instant
+Area of Effect: 1 creature 
+Saving Throw: Wand (Negate)
+
+White crystalline motes spray forth in a column towards the victim, striking them square in the chest with numbing force. The temperature inside the column is deadly, and damage is 16d3 with a Save vs. Wand for half.~
+	@20182= ~Diseased Dart Trap~
+	@20183= ~This trap contains the necessary materials to launch a Diseased Dart when triggered by an enemy creature within 4ft.
+
+Diseased Dart: This dart is coated in a deadly disease that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target is infected with disease (1 damage every second) permanently (Save vs. Death negates)
+
+Damage: 1d3 (piercing)~
+	@20190= ~Dart of Wounding Trap~
+	@20191= ~This trap contains the necessary materials to launch a Dart of Wounding when triggered by an enemy creature within 4ft.
+
+Dart of Wounding: This dart is coated in a deadly poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 4 poison damage every second for 17 rounds (Save vs. Death negates)
+
+Damage: 1d3 (piercing)~
+//	@20200= ~Underwater Bite~
+	@20210= ~Minor Spike Trap~
+	@20211= ~This trap contains the necessary materials to launch a small spike when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 1 (piercing)~
+//	@20220= ~Muck Trap~	//	@20230= ~Shadow Death~	//	@20240= ~Guillotine~
+	@20250= ~Lightning Orb III Trap~
+	@20251= ~This trap contains the necessary materials to launch a level 16 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+	@20260= ~Lightning Orb II Trap~
+	@20261= ~This trap contains the necessary materials to launch a level 14 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+	@20270= ~Lightning Orb I Trap~
+	@20271= ~This trap contains the necessary materials to launch a level 11 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+	@20282= ~Paralytic Poison Dart Trap~
+	@20283= ~This trap contains the necessary materials to launch a Paralytic Poison Dart when triggered by an enemy creature within 4ft.
+
+Paralytic Poison Dart: This dart is coated in a paralytic poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 4 rounds (Save vs. Death negates)
+– Hit target must save vs. Spell or be paralyzed for 4 rounds
+
+Damage: 1d3 (piercing)~
+	@20292= ~Disorienting Poison Dart Trap~
+	@20293= ~This trap contains the necessary materials to launch a Confusing Dart when triggered by an enemy creature within 4ft.
+
+Disorienting Poison Dart: This dart is coated in a disorienting poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 4 rounds (Save vs. Death at -4 negates)
+– Hit target must save vs. Spell at -4 or be confused for 4 rounds
+
+Damage: 1d3 (piercing)~
+	@20302= ~Death Fog Trap~
+	@20303= ~This trap contains the necessary materials to launch a Death Fog spell when triggered by an enemy creature within 4ft.
+
+Death Fog
+(Alteration, Evocation)
+
+Level: 6
+Range: Visual range of the caster
+Duration: 15 rounds
+Area of Effect: 12-ft. radius
+Saving Throw: Special
+
+This spell brings forth a billowing cloud of acidic fog. The thick fog limits movement to 50% of a creature's current movement rate. Exposure to the fog results in increasing amounts of acid damage over time as follows:
+
+1st round: 4 points of damage
+2nd round: 8 points of damage
+3rd round and later: 16 points of damage
+
+While in the fog, creatures must save vs. Spell every round or suffer -2 to Strength and Dexterity for the duration of that round.~
+	@20312= ~Finger of Death Trap~
+	@20313= ~This trap contains the necessary materials to launch a Finger of Death spell when triggered by an enemy creature within 4ft.
+
+Finger of Death
+(Necromancy)
+
+Level: 7
+Range: Visual range of the caster
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: Special
+
+The caster utters the Finger of Death incantation, points <PRO_HISHER> index finger at the creature to be slain, and unless the victim makes a Save vs. Spell, the victim dies instantly. Even if the save is successful, however, the brush with death still inflicts 2d8+1 points of magic damage. Characters slain by Finger of Death cannot be resurrected—they are gone forever.~
+	@20322= ~Color Spray Trap~
+	@20323= ~This trap contains the necessary materials to launch a level 5 Color Spray spell when triggered by an enemy creature within 4ft.
+
+Color Spray
+(Alteration)
+
+Level: 1
+Range: 12 ft.
+Duration: Instant
+Area of Effect: 29-ft. cone with 90-deg. arc
+Saving Throw: Special
+
+This spell creates a vivid, fan-shaped spray of clashing colors to spring forth from the caster's hand. Creatures within the area are affected in order of increasing distance from the wizard. All creatures in the area above the level of the caster or ones that have greater than 6 Hit Dice must make a Save vs. Spell. The spell's effects depend on the caster—creatures with Hit Dice/levels fewer than or equal to the caster are knocked unconscious (do not awaken when struck) for 5 rounds, those with Hit Dice/levels one or two greater than the wizard are blinded for 3 rounds, and any other creatures are stunned for 1 round.~
+	@20332= ~Major Magic Missile Trap~
+	@20333= ~This trap contains the necessary materials to launch a level 9 Magic Missile spell when triggered by an enemy creature within 4ft.
+
+Magic Missile
+(Evocation)
+
+Level: 1
+Range: 30ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: None 
+
+Use of the Magic Missile spell, one of the most popular 1st-level spells, creates up to five missiles of magical energy that dart forth from the wizard's fingertip and unerringly strike their target, which must be a creature of some sort. Each missile inflicts 1d4+1 points of damage. For every 2 extra levels of experience, the wizard gains an additional missile—<PRO_HESHE> has 2 at 3rd level, 3 at 5th level, 4 at 7th level, up to a total of 5 at 9th level.~
+	@20342= ~Minor Fireball Trap~
+	@20343= ~This trap contains the necessary materials to launch a level 7 Fireball spell when triggered by an enemy creature within 4ft.
+
+Fireball
+(Evocation)
+
+Level: 3
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 15-ft. radius
+Saving Throw: 1/2 
+
+A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster (up to a maximum of 10d6). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their Saving Throws each suffer full damage from the blast. Those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each receiving half.~
+	@20352= ~Flesh to Stone Trap~
+	@20353= ~This trap contains the necessary materials to launch a Flesh to Stone spell when triggered by an enemy creature within 4ft.
+
+Flesh to Stone
+(Alteration)
+
+Level: 6
+Range: Visual range of the caster
+Duration: Permanent
+Area of Effect: 1 creature
+Saving Throw: Neg.
+
+This spell turns a creature to stone. The target is allowed a Save vs. Spell to avoid the effect. Petrification can be reversed with the 6th-level wizard spell Stone to Flesh. This spell works on cadaverous undead (i.e. zombies and ghouls), but not incorporeal and skeletal undead.~
+	@20362= ~Horror Trap~
+	@20363= ~This trap contains the necessary materials to launch a Horror spell when triggered by an enemy creature within 4ft.
+
+Horror
+(Necromancy)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+All enemies within the area of effect must save vs. Spell or flee in terror. Certain creatures, such as undead, are immune to this spell.~
+	@29340= ~Bigby's Crushing Hand Trap~
+	@29341= ~This trap contains the necessary materials to launch a Bigby's Crushing Hand spell when triggered by an enemy creature within 4ft.
+
+Bigby's Crushing Hand
+(Evocation)
+
+Level: 9
+Range: 35 ft.
+Duration: 3 rounds
+Casting Time: 9
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell creates a distortion that crushes the target dealing 5d20 damage then disappearing.~
+	@29500= ~Fast Skull Trap~
+	@29501= ~This trap contains the necessary materials to launch a level 7 Skull Trap spell when triggered by an enemy creature within 4ft.
+
+Skull Trap
+(Necromancy)
+
+Level: 3
+Range: 60 ft.
+Duration: Special
+Area of Effect: 11-ft. radius
+Saving Throw: none
+
+When this spell is cast, a skull is thrown by the caster at the target area. The skull floats in the area until a creature comes within 8 ft. of it. When this happens, the skull is triggered and explodes damaging everyone within a 11-ft. radius. The damage inflicted is equal to 1d6 per level of the caster.~
+	@36830= ~Tangle Web Trap~
+	@36831= ~This trap contains the necessary materials to launch a tangle web when triggered by an enemy creature within 4ft.
+
+Tangle Web: Sprays a stream of webbing at one target.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target must save vs. Spell at -2 or be held by the webbing for 2 rounds~
+	@37060= ~Venting Trap~
+	@37061= ~This trap contains the necessary materials to launch a vent of gas when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 6d10 (piercing)~
+	@37070= ~Poison Dart Trap~
+	@37071= ~This trap contains the necessary materials to launch a series of Poison Darts when triggered by an enemy creature within 4ft.
+
+Poison Dart: These darts are coated in a deadly poison that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 5 rounds
+
+Damage: 4d6 (piercing)~
+	@37080= ~Slime Trap~
+	@37081= ~This trap contains the necessary materials to launch acidic slime when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 14d6 (acid)~
+	@37090= ~Spear Trap~
+	@37091= ~This trap contains the necessary materials to launch a spear when triggered by an enemy creature within 4ft.
+
+Spear: One of the earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end. When the civilized races mastered metals, spearheads were made from iron and steel. Having reached this end, weaponsmiths began experimenting with different types of spearheads, thus leading to the development of certain polearm types.
+
+STATISTICS:
+
+Damage: 10d6 (piercing)~
+	@38650= ~Flesh to Stone Trap~
+	@38651= ~This trap contains the necessary materials to launch a Flesh to Stone spell when triggered by an enemy creature within 4ft.
+
+Flesh to Stone
+(Alteration)
+
+Level: 6
+Range: Visual range of the caster
+Duration: Permanent
+Area of Effect: 1 creature
+Saving Throw: none
+
+This spell turns a creature to stone. Petrification can be reversed with the 6th-level wizard spell Stone to Flesh. This spell works on cadaverous undead (i.e. zombies and ghouls), but not incorporeal and skeletal undead.~
+			>>>>>>>>	END	LOAD_TRA ~.../inlined.tra~
+			COPY_EXISTING	~ENGINEST.2DA~	override	SET_2DA_ENTRY 98 1 2 0	BUT_ONLY	IF_EXISTS
+			APPEND	~EA.IDS~ ~127 AREA_OBJECT~ UNLESS ~127[ %TAB%]+AREA_OBJECT~
+			DEFINE_PATCH_FUNCTION	GET_AREA_DATA	INT_VAR	section	= 0	RET	idx	RET_ARRAY	new	itemTrap	trapPRO BEGIN
+				SET	$new(~?~) = 1	SET	$itemTrap(~?~) = 1	SET	$trapPRO(~?~) = 1
+				PATCH_MATCH	section	WITH
+					0	BEGIN	TEXT_SPRINT	sec_name ~Region~
+						SET	$S(~#~) = 0x5a		SET	$S(~@~) = 0x5c		SET	$S(~$~) = 0xc4			SET	$O(type) = 0x20		SET	$O(hidden) = 0x60
+						SET	$O(detect) = 0x68	SET	$O(remove) = 0x6a	SET	$O(traps) = 0x6c	SET	$O(script) = 0x7c	SET	$O(flags) = 0x60	SET	reset = 2	SET	$O(unlock) = 0	SET	lock = 0
+						TEXT_SPRINT	match_trigger ~TR%LNL%76 0 0 0 0 "" "" OB~	//	Entered()
+					END
+					1	BEGIN	TEXT_SPRINT	sec_name ~Container~
+						SET	$S(~#~) = 0x74		SET	$S(~@~) = 0x70		SET	$S(~$~) = 0xc0			SET	$O(type) = 0			SET	$O(hidden) = 0
+						SET	$O(detect) = 0x2c	SET	$O(remove) = 0x2e	SET	$O(traps) = 0x30	SET	$O(script) = 0x48	SET	$O(flags) = 0x28	SET	reset = 8	SET	$O(unlock) = 0x26	SET	lock = BIT0
+						TEXT_SPRINT	match_trigger ~TR%LNL%82 0 0 0 0 "" "" OB~	//	Opened()
+					END
+					2	BEGIN	TEXT_SPRINT	sec_name ~Door~
+						SET	$S(~#~) = 0xa4		SET	$S(~@~) = 0xa8		SET	$S(~$~) = 0xc8			SET	$O(type) = 0			SET	$O(hidden) = 0x28
+						SET	$O(detect) = 0x6c	SET	$O(remove) = 0x6e	SET	$O(traps) = 0x70	SET	$O(script) = 0x80	SET	$O(flags) = 0x28	SET	reset = 4	SET	$O(unlock) = 0x26	SET	lock = BIT1
+						TEXT_SPRINT	match_trigger ~TR%LNL%82 0 0 0 0 "" "" OB~	//	Opened()
+					END
+					DEFAULT	SET	$S(~#~) = 0
+				END
+				PATCH_IF	$S(~#~)	BEGIN
+					READ_SHORT	$S(~#~)	$S(~#~)	READ_LONG		$S(~@~)	$S(~@~)
+					FOR	(i = 0; i < $S(~#~); ++i)	BEGIN
+						TEXT_SPRINT spell_res ~~	SET	exists = 1
+						PATCH_IF	$O(type)	BEGIN	SET	type = BYTE_AT ($S(~@~) + i * $S(~$~) + $O(type))	END	ELSE	BEGIN	SET	type = 0	END
+						PATCH_IF	!type	BEGIN
+							READ_ASCII	($S(~@~) + i * $S(~$~))	trap_name (0x20) NULL
+							SET	hidden = 8	PATCH_IF	$O(hidden)	BEGIN	SET	hidden = LONG_AT	($S(~@~) + i * $S(~$~) + $O(hidden))	END
+							SET	unlock = 0	PATCH_IF	$O(unlock)	BEGIN	SET	unlock = SHORT_AT	($S(~@~) + i * $S(~$~) + $O(unlock))	END
+							READ_LONG		($S(~@~) + i * $S(~$~) + $O(flags))	flags
+							READ_SHORT	($S(~@~) + i * $S(~$~) + $O(detect))	detect	SET	lore = detect / 2
+							READ_SHORT	($S(~@~) + i * $S(~$~) + $O(remove))	remove 	SET	remove = remove * 5 / 4
+							READ_SHORT	($S(~@~) + i * $S(~$~) + $O(traps))	traps
+							READ_ASCII	($S(~@~) + i * $S(~$~) + $O(script))	file
+							PATCH_IF	((hidden BAND 8) AND (detect != 100) AND traps AND (FILE_EXISTS_IN_GAME	~%file%.bcs~)
+								AND FILE_CONTAINS_EVALUATED	(EVAL ~%file%.bcs~ ~%match_trigger%~))	BEGIN	SET	trapped = 1
+							END	ELSE	BEGIN	SET	trapped = 0	END
+							PATCH_IF	(flags BAND lock) AND (unlock != 100)	BEGIN	SET locked = 1	END	ELSE	BEGIN	SET	locked = 0	END
+							PATCH_IF	section = 2	BEGIN	SET	unlock = 0	END
+							PATCH_IF	section = 1	BEGIN	READ_ASCII	($S(~@~) + i * $S(~$~)) cont_name (20) NULL	END
+							PATCH_IF	trapped OR locked BEGIN	//	Valid Trap and/or Lock
+								PATCH_IF	trapped	BEGIN
+									PATCH_IF	!VARIABLE_IS_SET	$new(~%section%~ ~%detect%~ ~%remove%~ ~%file%~)	BEGIN
+										LPF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~bcs~	base = $Trap_Lock_Overhaul(~%sec_name%~ ~%file%~ ~%detect%~ ~%remove%~)	RET bcsfile = filename	END
+										TEXT_SPRINT	$new(~%section%~ ~%detect%~ ~%remove%~ ~%file%~) ~%bcsfile%~	SET	exists = 0
+									END	TEXT_SPRINT	bcsfile $new(~%section%~ ~%detect%~ ~%remove%~ ~%file%~)
+									WRITE_ASCIIE	($S(~@~) + i * $S(~$~) + $O(script))	$new(~%section%~ ~%detect%~ ~%remove%~ ~%file%~) #8
+								END	ELSE	BEGIN
+									PATCH_IF	!VARIABLE_IS_SET	$new(~%section%~ ~%file%~)	BEGIN
+										LPF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~bcs~	base = $Trap_Lock_Overhaul(~%sec_name%~ ~%file%~)	RET bcsfile = filename	END
+										TEXT_SPRINT	$new(~%section%~ ~%file%~) ~%bcsfile%~	SET	exists = 0
+									END	TEXT_SPRINT bcsfile $new(~%section%~ ~%file%~)
+									WRITE_ASCIIE	($S(~@~) + i * $S(~$~) + $O(script))	$new(~%section%~ ~%file%~) #8
+								END
+								PATCH_IF	exists AND sub4 AND locked AND section = 1 AND !FILE_CONTAINS_EVALUATED (EVAL ~%bcsfile%.bcs~ ~"%cont_name%"~)	BEGIN
+									INNER_ACTION	BEGIN
+										EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_unlock_cont.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER
+									END
+								END
+								PATCH_IF	!exists	BEGIN
+									INNER_ACTION	BEGIN
+										ACTION_IF	(!FILE_EXISTS_IN_GAME	~%file%.bcs~) OR (~%file%~ STR_EQ ~~)	BEGIN	COPY	~.../inlined.bcs~	~override\%bcsfile%.bcs~	END
+										COPY_EXISTING	~%bcsfile%.bcs~	override	~%file%.bcs~	~override\%bcsfile%.bcs~
+											PATCH_IF	trapped	BEGIN
+												DECOMPILE_AND_PATCH	BEGIN
+													PATCH_IF	sub1 = 1 AND !section	BEGIN
+														REFACTOR_TRIGGER	~Entered(\[ANYONE\])~	~Entered([ANYONE])%WNL%OR(2)%WNL%CheckStatLT(LastTrigger,%detect%,TRAPS)%WNL%!Class(LastTrigger,MONK)~
+													END
+													SET	spell = INDEX_BUFFER	(CASE_SENSITIVE	~[ %TAB%^]\(ReallyForce\|Force\|Apply\)?Spell\(NoDec\|Dead\)?\(Point\)? ?(.+,~)
+													PATCH_IF	spell = ~-1~	BEGIN
+														SET	spell = INDEX_BUFFER	(CASE_SENSITIVE	~[ %TAB%^]\(ReallyForce\|Force\|Apply\)?Spell\(NoDec\|Dead\)?\(Point\)?RES ?(~)
+													END
+													PATCH_IF	spell != ~-1~	BEGIN		SET	start	= INDEX_BUFFER	( ~,~ spell)
+														PATCH_IF	start != ~-1~	BEGIN		SET	end	= INDEX_BUFFER	( ~)~ start)
+															PATCH_IF	end != ~-1~	BEGIN	READ_ASCII	(start + 1) label (end - start - 1)
+																PATCH_IF	FILE_CONTAINS_EVALUATED (~SPELL.IDS~	~[ %TAB%]%label%[ %TAB%%WNL%$]~)	BEGIN
+																	LPF	RES_NUM_OF_SPELL_NAME	STR_VAR	spell_name = EVAL ~%label%~	RET	spell_res	END	TO_UPPER	spell_res
+																END	ELSE	BEGIN
+																	INNER_PATCH_SAVE	spell_res	~%label%~	BEGIN	REPLACE_TEXTUALLY	~"~	~~	END	TO_UPPER	spell_res
+																END
+															END
+														END
+													END
+												END
+											END
+										IF_EXISTS
+										ACTION_IF	locked	BEGIN
+											ACTION_IF	sub4 AND section = 1	BEGIN	EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_unlock_cont.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER	END
+											ACTION_IF	sub4 AND section = 2	BEGIN	EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_unlock_door.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER	END
+										END
+										ACTION_IF	!(~%spell_res%~ STR_EQ ~~) AND trapped	BEGIN
+											ACTION_IF	FILE_EXISTS_IN_GAME	~%spell_res%.spl~	BEGIN
+												ACTION_IF sub3 = 1	BEGIN
+													ACTION_IF	!VARIABLE_IS_SET	$itemTrap(~%spell_res%~)	BEGIN
+														LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~itm~	base = $Recoverable_Trap(~%spell_res%~)	RET itm = filename	END
+														LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~spl~	base = $Recoverable_Trap(~%spell_res%~)	RET spl = filename	END
+														LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~pro~	base = $Recoverable_Trap(~%spell_res%~)	RET pro = filename	END
+													END	ELSE	BEGIN
+														OUTER_SPRINT	itm $itemTrap(~%spell_res%~)
+													END
+												END
+												OUTER_PATCH	~%spell_res%~	BEGIN
+													READ_ASCII	0	res	ELSE	~~	(4)
+													READ_ASCII	4 id	ELSE	~~	(3)
+													PATCH_MATCH	id	WITH
+														984 989 WHEN ~%res%~ STR_EQ ~SPPR~ AND GAME_IS ~iwdee~	//	IWDEE versions
+															BEGIN	SET	name = id * 10 + 10002	SET	desc = name + 1	END
+														901	982	983 984 985 986 987 988 989	WHEN ~%res%~ STR_EQ ~SPPR~
+														 BEGIN	SET	name = id * 10 + 10000	SET	desc = name + 1	END
+														06 09 12 13 18 28 29 30 31 32 33 34 35 WHEN ~%res%~ STR_EQ ~SPWI~ AND GAME_IS ~iwdee~	//	IWDEE versions
+															BEGIN	SET	name = id * 10 + 20002	SET	desc = name + 1	END
+														00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 934 950 WHEN ~%res%~ STR_EQ ~SPWI~
+															BEGIN	SET	name = id * 10 + 20000	SET	desc = name + 1	END
+														683 706	707 708 709 865	WHEN ~%res%~ STR_EQ ~SPIN~
+														 BEGIN	SET	name = id * 10 + 30000	SET	desc = name + 1	END
+													DEFAULT
+														INNER_ACTION	BEGIN
+															OUTER_SET	name = 1001	OUTER_SET	desc = 1002
+															COPY_EXISTING	~%spell_res%.spl~	override
+																READ_STRREF NAME1 name_ref	ELSE ~%unknown%~
+																READ_STRREF UNIDENTIFIED_DESC desc_ref	ELSE ~~
+																PATCH_IF	~%name_ref%~ STR_EQ ~<Invalid Strref -1>~	BEGIN	TEXT_SPRINT	name_ref ~%unknown%~	END
+																PATCH_IF	~%desc_ref%~ STR_EQ ~<Invalid Strref -1>~	BEGIN	TEXT_SPRINT	desc_ref ~~	END
+															BUT_ONLY
+														END
+													END
+													SET	name = RESOLVE_STR_REF ((AT name))
+													SET	desc = RESOLVE_STR_REF ((AT desc))
+												END
+												ACTION_IF	sub2	BEGIN
+													EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_detect_UN.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER
+													EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_detect_ID.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER
+													ACTION_IF	!sub3 BEGIN	EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_disarm_none.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER	END
+												END
+												ACTION_IF sub3	BEGIN
+													ACTION_IF	!sub2	BEGIN	EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_disarm_none.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER	END
+													EXTEND_TOP ~%bcsfile%.bcs~ ~.../inlined_disarm_item.baf~ EVALUATE_BUFFER	EVALUATE_BUFFER
+													COPY_EXISTING	- ~%spell_res%.spl~	override	READ_SHORT	0x98	proj	IF_EXISTS
+													ACTION_MATCH	proj	WITH	81 82 83 84 85 86 87 88 89 90 91	BEGIN	OUTER_SET	proj = 23	END	DEFAULT	END
+													ACTION_IF	!VARIABLE_IS_SET	$itemTrap(~%spell_res%~)	BEGIN
+														OUTER_SPRINT	$itemTrap(~%spell_res%~)	~%itm%~
+														ACTION_IF	!VARIABLE_IS_SET	$trapPRO(~%proj%~)	BEGIN
+															ACTION_GET_STRREF name missile_label
+															APPEND	~PROJECTL.IDS~	~%idx% %pro%~	OUTER_SET	idx += 1
+															APPEND	~MISSILE.IDS~		~%idx% %missile_label%~
+															COPY	~.../inlined.pro~	~override\%pro%.pro~	EVALUATE_BUFFER	WRITE_SHORT	0x21a	proj
+															OUTER_SET	$trapPRO(~%proj%~) = idx
+														END
+														COPY	~.../inlined.itm~	~override\%itm%.itm~	EVALUATE_BUFFER
+															SAY	NAME1	@1000	WRITE_LONG	NAME2	name	SAY	DESC	@1004	WRITE_LONG	IDENTIFIED_DESC	desc
+															LPF	ADD_ITEM_EFFECT	INT_VAR	type = 1	opcode = 252	target = 1	parameter2 = 1	STR_VAR	resource = EVAL ~%spl%~	END
+															LPF	ADD_ITEM_EFFECT	INT_VAR	type = 1	opcode = 215	target = 1	parameter2 = 2	timing = 1	STR_VAR	resource = ~SPTRAPBB~	END
+														//
+														COPY_EXISTING	~%spell_res%.SPL~	~override\%spl%.spl~
+															WRITE_LONG	NAME1	~-1~	WRITE_LONG	UNIDENTIFIED_DESC	~-1~	WRITE_SHORT	0x1c	4
+															LPF	ALTER_SPELL_HEADER	INT_VAR	projectile = $trapPRO(~%proj%~)	END
+															LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 321	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 206	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	ALTER_EFFECT	INT_VAR	silent = 1	match_opcode = 318	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	ALTER_EFFECT	INT_VAR	silent = 1	match_opcode = 324	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+														//
+														COPY_EXISTING	~%spell_res%.SPL~	~override\%spl%F.spl~
+															WRITE_LONG	NAME1	~-1~	WRITE_LONG	UNIDENTIFIED_DESC	~-1~	WRITE_SHORT	0x1c	4
+															LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 321	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 206	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	ALTER_EFFECT	INT_VAR	silent = 1	match_opcode = 318	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+															LPF	ALTER_EFFECT	INT_VAR	silent = 1	match_opcode = 324	STR_VAR	match_resource = $SOURCE(RES)	resource = $DEST(RES)	END
+														//
+													END
+												END
+											END
+										END
+									END
+								END
+							END
+						END
+					END
+				END
+			END
+			<<<<<<<< .../inlined.pro
+%pro_data%>>>>>>>>
+			OUTER_PATCH_SAVE	pro_data ~~	BEGIN
+				INSERT_BYTES	0	0x300	WRITE_ASCII	0	~PRO V1.0~	WRITE_SHORT	0x8	3	WRITE_SHORT	0xa	40	WRITE_LONG	0xc	(BIT2 + BIT5 + BIT6)
+				WRITE_LONG	0x100	BIT3	WRITE_ASCII	0x104	~TRAPGR~	WRITE_BYTE	0x133	1	WRITE_SHORT	0x200	(BIT0 + BIT2 + BIT6 + BIT15)
+				WRITE_SHORT	0x204	64	WRITE_SHORT	0x206	80	WRITE_SHORT	0x210 1	WRITE_BYTE	0x216	1	WRITE_BYTE	0x217	~-1~	WRITE_SHORT	0x21a	1	
+			END
+			<<<<<<<< .../inlined.spl
+%spl_data%>>>>>>>>
+			OUTER_PATCH_SAVE	spl_data ~~	BEGIN
+				INSERT_BYTES	0	0xca	WRITE_ASCII	0	~SPL V1  ~	WRITE_LONG	0x8	~-1~	WRITE_LONG	0xc	~-1~	WRITE_LONG	0x34	1
+				WRITE_LONG	0x64	0x72	WRITE_SHORT	0x68	1	WRITE_LONG	0x6a	0x9a	WRITE_SHORT	0x82	1	WRITE_SHORT	0x90	1	WRITE_SHORT	0x98	1
+				WRITE_SHORT	0x9a	150	WRITE_BYTE	0x9c	1	WRITE_LONG	0xa6	1	WRITE_BYTE	0xac	100
+			END
+			<<<<<<<< .../inlined.itm
+%itm_data%>>>>>>>>
+			OUTER_PATCH_SAVE	itm_data ~~	BEGIN
+				INSERT_BYTES	0	0xaa	WRITE_ASCII	0	~ITM V1  ~	WRITE_LONG	0x8	~-1~	WRITE_LONG	0xc	~-1~	WRITE_LONG	0x18	(BIT2 + BIT3 + BIT5)
+				WRITE_LONG	0x34	100	WRITE_SHORT	0x38	10	WRITE_ASCII	0x3a	~TRAPGR~	WRITE_SHORT	0x42	15	WRITE_ASCII	0x44	~GTREAS01~	WRITE_ASCII	0x58	~CMISC09~
+				WRITE_LONG	0x64	0x72	WRITE_SHORT	0x68	1	WRITE_LONG	0x6a	0xaa	WRITE_BYTE	0x72	1	WRITE_BYTE	0x74	3	WRITE_ASCII	0x76	~SPCL412B~	WRITE_BYTE	0x7e	4
+				WRITE_SHORT	0x80	1	WRITE_SHORT	0x94	1	WRITE_SHORT	0x96	1	WRITE_SHORT	0x9c	1
+			END
+			COPY_EXISTING	- ~PROJECTL.IDS~	override	READ_2DA_ENTRIES_NOW	PROJECTL	2	SET	idx = 0
+				FOR	(i = 1; i < PROJECTL; ++i)	BEGIN	SET	idx = ($PROJECTL(~%i%~ ~0~) > idx ?	$PROJECTL(~%i%~ ~0~) : idx)	END	SET	idx += 1
+			IF_EXISTS
+			LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~spl~	base = EVAL ~Detectable_Trap_Detect~	RET SPL_TRAP = filename	END
+			LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~itm~	base = EVAL ~Detectable_Trap_Detect~	RET ITM_TRAP = filename	END
+			LAF	GET_UNIQUE_FILE_NAME	STR_VAR	extension = ~pro~	base = EVAL ~Detectable_Trap_Detect~	RET PRO_TRAP = filename	END
+			ACTION_IF	IDS_OF_SYMBOL (~SPELL~ ~CLERIC_FIND_TRAPS~) != ~-1~	BEGIN
+				LAF	ADD_SPLSTATE	STR_VAR	label = ~FIND_TRAPS~	RET	FIND_TRAPS = new_ids	END
+				LAF	RES_NUM_OF_SPELL_NAME	STR_VAR	spell_name = ~CLERIC_FIND_TRAPS~	RET	spell_res	END
+				COPY_EXISTING	~%spell_res%.SPL~	override
+					LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 174	opcode = 328	parameter2 = FIND_TRAPS	match_timing = 4	timing = 0	special = 1	STR_VAR	resource = ~~	END
+					LPF	CLONE_EFFECT	INT_VAR	silent = 1	match_opcode = 142	opcode = 328	parameter2 = FIND_TRAPS	special = 1	STR_VAR	resource = ~~	END
+				BUT_ONLY	IF_EXISTS
+			END
+			COPY	~.../inlined.spl~	~override\%SPL_TRAP%.spl~	EVALUATE_BUFFER
+			<<<<<<<< .../inlined.bcs
+			>>>>>>>>
+			<<<<<<<< .../inlined_disarm_item.baf
+				IF
+					Disarmed([ANYONE])
+					!CheckStatLT(LastTrigger,%remove%,TRAPS)
+				THEN
+					RESPONSE #100
+						TriggerActivation(Myself,FALSE)
+						GiveItemCreate("%itm%",LastTrigger,1,0,0)
+				END
+				IF
+					Disarmed([ANYONE])
+					CheckStatLT(LastTrigger,%remove%,TRAPS)
+				THEN
+					RESPONSE #100
+						TriggerActivation(Myself,FALSE)
+				END
+			>>>>>>>>
+			<<<<<<<< .../inlined_disarm_none.baf
+				IF
+					Disarmed([ANYONE])
+				THEN
+					RESPONSE #100
+						TriggerActivation(Myself,FALSE)
+				END
+			>>>>>>>>
+			OUTER_SPRINT	detect_ID_string
+			~~~~~
+				IF
+					Detect(%target%)
+					OR(2)
+						!CheckStatLT(LastSeenBy,%detect%,TRAPS)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+					OR(2)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+						TriggerOverride(LastSeenBy,ModalState(DETECTTRAPS))
+					OR(2)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+						!StateCheck(LastSeenBy,STATE_BLIND)
+					Range(LastSeenBy,15)
+					!CheckStatLT(LastSeenBy,%lore%,LORE)
+					ActionListEmpty()
+				THEN
+					RESPONSE #100
+						DisplayStringHeadNoLog(Myself,%name%)
+						ReallyForceSpellRES("%SPL_TRAP%",Myself)
+						Continue()
+				END
+			~~~~~
+			OUTER_SPRINT	detect_UN_string
+			~~~~~
+				IF
+					Detect(%target%)
+					OR(2)
+						!CheckStatLT(LastSeenBy,%detect%,TRAPS)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+					OR(2)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+						TriggerOverride(LastSeenBy,ModalState(DETECTTRAPS))
+					OR(2)
+						CheckSpellState(LastSeenBy,FIND_TRAPS)
+						!StateCheck(LastSeenBy,STATE_BLIND)
+					Range(LastSeenBy,15)
+					!CheckStatLT(LastSeenBy,%lore%,LORE)
+					ActionListEmpty()
+				THEN
+					RESPONSE #100
+						DisplayStringHeadNoLog(Myself,@1000)
+						ReallyForceSpellRES("%SPL_TRAP%",Myself)
+						Continue()
+				END
+			~~~~~
+			OUTER_SPRINT	detect_ID	~~	OUTER_SPRINT	detect_UN	~~
+			ACTION_FOR_EACH	target IN ~[GOODCUTOFF]~ ~NearestAllyOf([GOODCUTOFF])~ ~SecondNearestAllyOf([GOODCUTOFF])~ ~ThirdNearestAllyOf([GOODCUTOFF])~
+			 ~FourthNearestAllyOf([GOODCUTOFF])~ ~FifthNearestAllyOf([GOODCUTOFF])~ ~SixthNearestAllyOf([GOODCUTOFF])~ ~SeventhNearestAllyOf([GOODCUTOFF])~
+			 ~EighthNearestAllyOf([GOODCUTOFF])~ ~NinthNearestAllyOf([GOODCUTOFF])~ ~TenthNearestAllyOf([GOODCUTOFF])~	BEGIN
+				OUTER_PATCH_SAVE	text_ID ~%detect_ID_string%~	BEGIN	EVALUATE_BUFFER	END	OUTER_SPRINT	detect_ID ~%detect_ID%%text_ID%~
+				OUTER_PATCH_SAVE	text_UN ~%detect_UN_string%~	BEGIN	EVALUATE_BUFFER	END	OUTER_SPRINT	detect_UN ~%detect_UN%%text_UN%~
+			END
+			<<<<<<<< .../inlined_detect_ID.baf
+				%detect_ID%
+			>>>>>>>>
+			<<<<<<<< .../inlined_detect_UN.baf
+				%detect_UN%
+			>>>>>>>>
+			<<<<<<<< .../inlined_unlock_door.baf
+				IF
+					Clicked([ANYONE])
+					ObjectActionListEmpty(LastTrigger)
+				THEN
+					RESPONSE #100
+						ActionOverride(LastTrigger,PickLock([127]))
+						Continue()
+				END
+			>>>>>>>>
+			<<<<<<<< .../inlined_unlock_cont.baf
+				IF
+					Name("%cont_name%",Myself)
+					Clicked([ANYONE])
+					ObjectActionListEmpty(LastTrigger)
+					Range(LastTrigger,4)
+				THEN
+					RESPONSE #100
+						ActionOverride(LastTrigger,PickLock("%cont_name%"))
+						Continue()
+				END
+			>>>>>>>>
+			OUTER_SPRINT	unknown @1003
+			COPY_EXISTING_REGEXP	~^.+\.ARE$~	override
+				TEXT_SPRINT	area_name	~%SOURCE_RES%~	PATCH_PRINT	~ Processing: %SOURCE_RES%.ARE~	PATCH_SILENT
+				FOR	(section = 0; section < 3; ++section)	BEGIN
+					LPF	GET_AREA_DATA	INT_VAR	section	RET	idx	RET_ARRAY	new	itemTrap	trapPRO	END
+				END
+			BUT_ONLY
+		END
+	END
+	BEGIN	~Monk Evasion, Fast Detection, Recovery, Anyone OpenLocks~	DESIGNATED	1111	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_FAST_RECOVERY_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 1	sub3 = 1	sub4 = 1	END
+	BEGIN	~Monk Evasion, Fast Detection, Anyone OpenLocks~						DESIGNATED	1110	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_FAST_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 1	sub3 = 0	sub4 = 1	END
+	BEGIN	~Monk Evasion, Recovery, Anyone OpenLocks~									DESIGNATED	1101	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_RECOVERY_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 0	sub3 = 1	sub4 = 1	END
+	BEGIN	~Fast Detection, Recovery, Anyone OpenLocks~								DESIGNATED	1011	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_FAST_RECOVERY_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 1	sub3 = 1	sub4 = 1	END
+	BEGIN	~Monk Evasion, Anyone OpenLocks~														DESIGNATED	1100	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 0	sub3 = 0	sub4 = 1	END
+	BEGIN	~Fast Detection, Anyone OpenLocks~													DESIGNATED	1010	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_FAST_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 1	sub3 = 0	sub4 = 1	END
+	BEGIN	~Recovery, Anyone OpenLocks~																DESIGNATED	1001	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_RECOVERY_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 0	sub3 = 1	sub4 = 1	END
+	BEGIN	~Anyone OpenLocks~																					DESIGNATED	1000	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_LOCK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 0	sub3 = 0	sub4 = 1	END
+	BEGIN	~Monk Evasion, Fast Detection, Recovery~										DESIGNATED	0111	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_FAST_RECOVERY~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 1	sub3 = 1	sub4 = 0	END
+	BEGIN	~Monk Evasion, Fast Detection~															DESIGNATED	0110	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_FAST~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 1	sub3 = 0	sub4 = 0	END
+	BEGIN	~Monk Evasion, Recovery~																		DESIGNATED	0101	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK_RECOVERY~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 0	sub3 = 1	sub4 = 0	END
+	BEGIN	~Fast Detection, Recovery~																	DESIGNATED	0011	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_FAST_RECOVERY~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 1	sub3 = 1	sub4 = 0	END
+	BEGIN	~Monk Evasion~																							DESIGNATED	0100	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_MONK~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 1	sub2 = 0	sub3 = 0	sub4 = 0	END
+	BEGIN	~Fast Detection~																						DESIGNATED	0010	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_FAST~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 1	sub3 = 0	sub4 = 0	END
+	BEGIN	~Recovery~																									DESIGNATED	0001	SUBCOMPONENT	~Trap Overhaul~	LABEL	~TRAP_OVERHAUL_RECOVERY~
+		LAF	~COMPONENT$$MAIN~	INT_VAR	sub1 = 0	sub2 = 0	sub3 = 1	sub4 = 0	END
+	
+	
