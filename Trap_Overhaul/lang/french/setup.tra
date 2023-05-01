@@ -1,0 +1,737 @@
+@0 = ~Trap Overhaul~
+@1 = ~Monk Evasion, Fast Detection, Recovery, Anyone OpenLocks~
+@2 = ~Monk Evasion, Fast Detection, Anyone OpenLocks~
+@3 = ~Monk Evasion, Recovery, Anyone OpenLocks~
+@4 = ~Fast Detection, Recovery, Anyone OpenLocks~
+@5 = ~Monk Evasion, Anyone OpenLocks~
+@6 = ~Fast Detection, Anyone OpenLocks~
+@7 = ~Recovery, Anyone OpenLocks~
+@8 = ~Anyone OpenLocks~
+@9 = ~Monk Evasion, Fast Detection, Recovery~
+@10 = ~Monk Evasion, Fast Detection~
+@11 = ~Monk Evasion, Recovery~
+@12 = ~Fast Detection, Recovery~
+@13 = ~Monk Evasion~
+@14 = ~Fast Detection~
+@15 = ~Recovery~
+
+@1000= ~Piège~
+@1001= ~Piège : %name_ref%~
+@1002= ~Ce piège contient les matériaux nécessaires pour lancer un sort de %name_ref% quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+%desc_ref%~
+@1003= ~Inconnu~
+@1004= ~CSe piège contient les matériaux nécessaires pour lancer un sort ou une arme quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.~
+@1005= ~Succès du Crochetage~
+@19010= ~Piège: Glyphe de garde~
+@19011= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Glyphe de garde de niveau 9 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Glyphe de garde
+(Abjuration, Invocation)
+
+Niveau : 3
+Sphère: Garde
+Portée : 18 mètres
+Durée : permanente jusqu'à son déchargement
+Zone d'effet : rayon de 7,50 mètres 
+Jet de sauvegarde : 1/2 dégâts
+
+Un Glyphe de garde est une inscription magique puissante destinée à empêcher les créatures non autorisées ou hostiles de pénétrer dans une zone, de franchir une porte ou un passage donné. Il peut servir à protéger un petit pont, à garder une entrée ou comme piège sur un coffre ou une boîte. Toute créature violant la zone gardée subit la magie que cette zone renferme. Lorsque le glyphe est activé, il inflige à la victime entre 1 et 4 points de dégâts électriques par niveau du jeteur de sorts. Un jet de sauvegarde réussi contre le sort permet à la créature de ne subir que la moitié des dégâts. Le glyphe disparaît de lui-même lorsque vous quittez la zone dans laquelle il se trouve.~
+@19820= ~Piège : Charme néfaste~
+@19821= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Charme néfaste quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Charme néfaste
+(Enchantement/Charme)
+
+Nivea : 0
+Portée : 18 mètres
+Durée : 5 rounds
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Ce sort fonctionne de manière similaire à celui de Charme-personne, avec cependant une différence : il n'y a pas de bonus au jet de sauvegarde. Le Charme néfaste affecte toute créature humanoïde, bipède, demi-humaine de taille humaine ou inférieure sur laquelle il est lancé : lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, pixie, esprit-follet, troglodyte, etc. Ainsi, un guerrier du 10ème niveau serait affecté, mais pas un ogre. La créature a le droit d'effectuer un jet de sauvegarde pour résister au sort.
+
+Si la cible du sort échoue à ce jet de sauvegarde, il considère le lanceur du sort comme un ami de confiance qu'il doit protéger. Il peut lui donner des ordres, auxquels la cible obéira le plus vite possible.
+
+Si le jeteur de sorts nuit ou essaie de nuire à la personne sous le charme par une action non déguisée, ou si un sort de Dissipation de la magie est jeté avec succès à la personne sous le charme, le charme est rompu. Si plusieurs effets de charmes affectent simultanément une créature, le charme le plus récent prend le dessus. Notez que le sujet se souvient parfaitement des événements qui ont eu lieu lorsqu'il était sous le charme. Notez aussi que la créature ne peut pas quitter la zone dans laquelle elle a été charmée.~
+@19830= ~Piège : Confusion~
+@19831= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Confusion quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Confusion
+(Enchantement/Charme)
+
+Niveau : 4
+Portée : 10 mètres
+Durée : 5 rounds + 1 round tous les 6 niveaux
+Zone d'effet : rayon de 4,50 mètres
+Jet de sauvegarde : annule
+
+Ce sort provoque la confusion chez une ou plusieurs des créatures ennemies présentes dans la zone d'effet. Elles deviennent indécises et n'arrivent plus à passer à l'action. Toutes les créatures ennemies dans la zone d'effet peuvent lancer des jets de sauvegarde à -2 contre les sorts. Celles qui réussissent un jet de sauvegarde ne sont pas affectées par le sort tandis que celles qui le ratent deviennent berserk, confuses ou errent pendant la durée du sort. Les créatures errantes s'éloignent le plus possible du jeteur de sorts en utilisant leur mode de déplacement habituel (les personnages marchent, les poissons nagent, les chauves-souris volent, etc.) Toute créature confuse qui se fait attaquer considère son agresseur comme un ennemi et réagit en fonction de sa nature. Le sort dure 5 rounds, plus 1 round par tranche de 6 niveaux du jeteur de sorts.~
+@19840= ~Piège : Orbe chromatique~
+@19841= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Orbe chromatique quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Orbe chromatique
+(Invocation)
+
+Niveau : 1
+Portée : 27 mètres
+Durée : spéciale
+Zone d'effet : 1 créature
+Jet de sauvegarde : spécial
+
+Ce sort crée une sphère de 60 cm de diamètre. La sphère se dirige vers sa cible qu'elle atteint inévitablement. L'orbe inflige 2d8 points de dégâts magiques qui ne peuvent être évités par un jet de sauvegarde, et étourdit la victime pendant 2 tours à moins qu'elle ne réussisse un jet de sauvegarde contre les sorts avec un bonus de 6 points.~
+@19842= ~Piège  Colonne de feu~
+@19843= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Colonne de feu quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Colonne de feu
+(Invocation)
+
+Niveau : 5
+Portée : champ visuel du lanceur
+Durée : instantanée
+Zone d'effet : 1,5 m
+Jet de sauvegarde : demi-dégâts
+
+Une colonne de feu verticale tombe en grondant à l'endroit choisi. Le sort inflige 6d8 points de dégâts de feu à la cible et à toute victime proche, avec un jeu de sauvegarde contre les sorts pour éviter la moitié des dégâts.~
+@19850= ~Piège  Colonne de feu~
+@19851= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Colonne de feu de niveau 8 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Colonne de feu
+(Invocation)
+
+Niveau : 5
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : 1 créature
+Jet de sauvegarde : demi-dégâts
+
+Une colonne de feu verticale tombe en grondant à l'endroit choisi. La cible doit effectuer un jet de sauvegarde contre les sorts. En cas d'échec, la créature subit 1d8 points de dégâts par niveau du lanceur ; sinon, les dégâts sont réduits de moitié.~
+@19860= ~Piège : Fourvoiement magique~
+@19861= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Fourvoiement magique quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Fourvoiement magique
+(Enchantement/Charme)
+
+Niveau : 3
+Portée : champ visuel du lanceur
+Durée : 1 tour
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Toute créature ayant le don de jeter des sorts affectée par ce sort voit son pouvoir d'incantation sérieusement diminué. Lorsqu'elle essaie de jeter un sort, ce dernier a alors 80 % de chances d'échouer. Les créatures peuvent effectuer des jets de sauvegarde contre les sorts pour se prémunir contre cet effet, mais elles le font avec une pénalité de -2.~
+@19870= ~Piège : Appel de la foudre~
+@19871= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Appel de la foudre de niveau 8 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Appel de la foudre
+(Transmutation)
+
+Niveau : 3
+Portée : 24 mètres
+Durée : 1 round tous les 4 niveaux
+Zone d'effet : rayon de 108 mètres
+Jet de sauvegarde : demi-dégâts
+
+Appel de la foudre doit être lancé à l'extérieur, sinon il reste sans effet et le sort est perdu. Il permet à l'invocateur de faire tomber des éclairs, 1 par round. Le sort a une durée d'un round par tranche de 4 niveaux du prêtre. Chaque éclair provoque 2d8 points de dégâts électriques, plus 1d8 points de dégâts par niveau d'expérience du jeteur de sorts. Ainsi, un jeteur de sorts du 8ème niveau fera tomber 2 éclairs de 10d8 (2d8 +8d8) chacun.
+L'éclair tombe en frappant verticalement une des créatures ennemies du prêtre. Le premier ennemi frappé par un éclair sera la cible désignée lors de l'incantation. Ensuite, n'importe quel ennemi (mais pas les alliés) sera susceptible d'être frappé par les éclairs suivants.
+~
+@19880= ~Piège : Silence~
+@19881= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Silence quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Silence
+(Transmutation)
+
+Niveau : 2
+Portée : champ visuel du lanceur
+Durée : 2 rounds par niveau
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Lorsqu'un tel sort est jeté, un silence complet s'abat sur la créature concernée. Tous les sons s'évanouissent : il est impossible de parler ou de jeter un sort. Chaque créature située dans la zone doit effectuer un jet de sauvegarde contre les sorts à -5 ; si sa sauvegarde échoue, elle restera silencieuse pendant toute la durée du sort. ~
+@19880= ~Piège : Silence sur 5 m~
+@19881= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Silence sur 5 m quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Silence sur 5 mètres
+(Transmutation)
+
+Niveau : 2
+Portée : champ visuel du lanceur
+Durée : 2 rounds par niveau
+Zone d'effet : sphère de 5 mètres de rayon
+Jet de sauvegarde : annule
+
+Lorsqu'un tel sort est jeté, un silence complet s'abat sur la zone concernée. Tous les sons s'évanouissent : il est impossible de parler ou de jeter un sort. Chaque créature située dans la zone doit effectuer un jet de sauvegarde contre les sorts à -5 ; si sa sauvegarde échoue, elle restera silencieuse pendant toute la durée du sort. Notez qu'une fois lancé, ce sort ne continue pas d'affecter la zone ; seuls ceux dans la zone au moment de l'incantation sont frappés de mutisme.~
+@19890= ~Piège : Immobilisation des personnes~
+@19891= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Immobilisation des personnes quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Immobilisation des personnes
+(Enchantement/Charme)
+
+Niveau : 3
+Portée : 10 mètres
+Durée : 1 tour
+Zone d'effet : 1 créature
+Jet de sauvegarde : annules
+
+Ce sort fige sur place une seule créature humaine, demi-humaine ou humanoïde pendant 1 tour. Le sort d'Immobilisation des personnes affecte tout humain bipède, demi-homme ou humanoïde de taille humaine ou inférieure (lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, orque, pixie, esprit-follet, troglodyte, etc.) Ainsi, un guerrier du 10ème niveau pourra être immobilisé, mais pas un ogre.  Les créatures qui réussissent leur jet de sauvegarde à -1 sont totalement immunisées contre le sort. Les morts-vivants ne peuvent pas être immobilisés.
+
+Les créatures immobilisées ne peuvent ni se déplacer ni parler, mais elles restent conscientes des événements se produisant autour d'elles et peuvent utiliser des capacités ne requérant aucun mouvement ou parole. Le fait d'être immobilisé n'empêche pas que l'état du sujet empire sous l'effet des blessures, de la maladie ou du poison.~
+@19892= ~Piège : Immobilisation des personnes~
+@19893= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Immobilisation des personnes de niveau 8 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Immobilisation des personnes
+(Enchantement/Charme)
+
+Niveau : 3
+Portée : champ visuel du lanceur
+Durée : 1 round par niveau
+Zone d'effet : cible et jusqu'à 3 créature à moins de 6 m
+Jet de sauvegarde : annule
+
+Ce sort fige sur place 1d4 créatures humaines, demi-humaines ou humanoïdes pendant 6 rounds ou plus. Plus précisément, il affecte l'ennemi ciblé et au plus 3 autres créatures hostiles à moins de 6 m. Le sort d'Immobilisation des personnes affecte tout humain bipède, demi-homme ou humanoïde de taille humaine ou inférieure (lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, orque, pixie, esprit-follet, troglodyte, etc.) Ainsi, un guerrier du 10ème niveau pourra être immobilisé, mais pas un ogre.  Les créatures qui réussissent leur jet de sauvegarde sont totalement immunisées contre le sort.
+
+Les créatures immobilisées ne peuvent ni se déplacer ni parler, mais elles restent conscientes des événements se produisant autour d'elles et peuvent utiliser des capacités ne requérant aucun mouvement ou parole. Le fait d'être immobilisé n'empêche pas que l'état du sujet empire sous l'effet des blessures, de la maladie ou du poison.~
+@20010= ~Piège : Boule de feu~
+@20011= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Boule de feu de niveau 10  quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Boule de feu
+(Invocation)
+
+Niveau : 3
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : rayon de 4,50 m
+Jet de sauvegarde : demi-dégâts
+
+Une Boule de feu est une explosion de flammes qui éclate avec un grondement sourd et engendre des dégâts proportionnels au niveau d'expérience du magicien : 1d6 points de dégâts par niveau d'expérience du jeteur de sorts (10d6 maximum). Le magicien pointe son doigt et annonce la distance et la hauteur à laquelle il veut faire exploser la Boule de feu. Un éclair jaillit du bout de son doigt et, à moins qu'il ne soit bloqué par un corps physique ou une barrière solide avant d'atteindre sa destination, se transforme en Boule de feu (un impact prématuré provoque une explosion prématurée). Les créatures qui ratent leur jet de sauvegarde contre les sorts subissent la totalité des dégâts. Celles qui le réussissent parviennent à bondir à l'écart, à se jeter à terre ou à rouler sur le côté, et n'encaissent que la moitié des dégâts.
+~
+@20020= ~Piège : Éclair~
+@20021= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Éclair de niveau 10  quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Éclair
+(Invocation)
+
+Niveau : 3
+Portée : 21 m
+Durée : instantanée
+Zone d'effet : Chemin de l'éclair
+Jet de sauvegarde : demi-dégâts
+
+En lançant ce sort, le magicien libère une décharge électrique puissante qui inflige 1d6 points de dégâts par niveau du jeteur de sorts (dégâts maximum de 10d6) à chaque créature située dans la zone d'effet. Un jet de sauvegarde contre les sorts réussi permet de n'encaisser que la moitié des dégâts (arrondis à la fraction inférieure). Si l'éclair rencontre un mur, il rebondit jusqu'à ce qu'il atteigne sa longueur complète.~
+@20030= ~Piège : Projectile magique~
+@20031= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Projectile magique de niveau 5 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Projectile magique
+(Invocation)
+
+Niveau : 1
+Portée : 10 m
+Durée : instantanée
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort permet de créer jusqu'à cinq projectiles d'énergie magique qui fusent du bout des doigts du magicien et frappent à coup sûr leur cible, qui doit être une créature. Contre les créatures, chaque projectile inflige 1d4+1 points de dégâts. Pour chaque tranche de deux niveaux supplémentaires d'expérience, le magicien remporte un nouveau projectile (il en a deux au 3ème niveau, trois au 5ème niveau, quatre au 7ème niveau et cinq au 9ème niveau).
+~
+@20040= ~Piège  Nuage puant~
+@20041= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Nuage puant quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Nuage puant
+(Invocation)
+
+Niveau : 2
+Portée : 27 mètres
+Durée : 1 tour
+Zone d'effet : rayon de 4,50 mètres
+Jet de sauvegarde : annule
+
+
+En lançant ce sort, le magicien crée un nuage de vapeurs nauséabondes à une distance maximale de 27 mètres de l'endroit où il se trouve. Toute créature prise dans ce nuage doit lancer un jet de sauvegarde contre le poison avec un bonus de +2, sous peine de chanceler et d'être incapable d'attaquer à cause de ses nausées, pendant 1d2 rounds. Si elle réussit son jet de sauvegarde, la créature peut quitter le nuage sans en subir les effets néfastes ; mais, si elle y reste, elle doit effectuer un nouveau jet de sauvegarde à chaque round. Les effets néfastes du poison peuvent être ralentis ou neutralisés à l'aide d'un sort de Dissipation de la magie, mais si la créature reste dans la zone d'effet du sortilège, elle est toujours susceptible d'être victime de ses effets.~
+@20050= ~Piège : flèche perforante~
+@20051= ~Ce piège contient les matériaux nécessaires pour lancer une flèche perforante quand il est déclenché.
+
+Flèche perforante : cette flèche est longue et fine, empreinte de propriétés magiques qui l'amènent à "continuer" au travers des armures et en direction du cœur de la victime.
+
+PARAMÈTRES :
+
+Dégâts : 2d6 (perforant)
+~
+@20060= ~Piège : flèche tueuse~
+@20061= ~Ce piège contient les matériaux nécessaires pour lancer une flèche tueuse quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche tueuse : Ces flèches noires, tordues, semblent irradier le mal, comme si elles étaient possédées. Elles ont été conçues pour tuer n'importe quel type de créature.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- tue la cible à l'impact
+
+Dégâts : 1d6 (perforant)
+~
+@20062= ~Piège : flèche de foudre~
+@20063= ~Ce piège contient les matériaux nécessaires pour lancer une flèche de foudre quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche de foudre : Cette flèche semble crépiter d'énergie quand on la tient dans la main. Quand on tire, elle semble bondir vers sa cible en laissant derrière elle une odeur électrisée de soufre. Quand elle touche, on entend un craquement quand l'énergie emmagasinée est libérée dans la blessure de la cible.
+
+PARAMÈTRES :
+
+Dégâts : 1d6 (perforant), +2d6 électricité
+~
+@20070= ~Piège : flèche acide~
+@20071= ~Ce piège contient les matériaux nécessaires pour lancer une flèche acide quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche acide : Ces flèches sont enduites d'acide, de sorte que, si elles touchent, elles percent la chair de la cible et, plutôt que d'en rester là, commence à forer et à agrandir la plaie.
+
+PARAMÈTRES :
+
+Dégâts : 1d6 (perforant), +2d6 acide
+~
+@20080= ~Piège : flèche mordante~
+@20081= ~Ce piège contient les matériaux nécessaires pour lancer une flèche mordante quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche mordante : La flèche mordante a été conçue pour donner à l'archer un avantage crucial. Sa pointe barbelée est enduite d'un puissant poison qui passe dans le sang de la cible pour lui infliger d'horribles souffrances avant de l'achever.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- poison : la cible doit réussir un jet de sauvegarde contre la mort ou perdre 30 % de ses points de vie maximum en 20 secondes
+
+Dégâts : 1d6 (projectile)
+~
+@20090= ~Piège :Flèche explosive~
+@20091= ~Ce piège contient les matériaux nécessaires pour lancer une flèche explosive quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche explosive : Ces flèches sont particulièrement efficaces, car elles explosent dès l'impact en une grosse boule de feu et de shrapnel qui affecte toutes les créatures de la zone.
+
+PARAMÈTRES :
+- Explosion de 5 m de rayon à l'impact
+- Dégâts : 1d6, +6d6 dégâts d'explosion à l'impact (jet de sauvegarde contre sorts pour moitié)
+~
+@20092= ~Piège :Flèche explosive~
+@20093= ~Ce piège contient les matériaux nécessaires pour lancer une flèche explosive quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche explosive : Ces flèches sont particulièrement efficaces, car elles explosent dès l'impact en une grosse boule de feu et de shrapnel qui affecte toutes les créatures de la zone.
+
+PARAMÈTRES :
+
+Dégâts : 1d6, +6d6 dégâts d'explosion à l'impact (jet de sauvegarde contre sorts pour moitié)
+~
+@20100= ~Piège : Flèches de Dissipation~
+@20101= ~Ce piège contient les matériaux nécessaires pour lancer une flèche de dissipation quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèches de Dissipation : Ces flèches servent à dissiper tous les enchantements dont sa cible est entourée.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- Dissipation de la magie sur la cible
+
+Dégâts : 1d6 (projectile)
+~
+@20110= ~Piège : flèche de feu:~
+@20111= ~Ce piège contient les matériaux nécessaires pour lancer une flèche de de feu quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche de feu: La flèche de feu est une flèche magique qui s'embrase dès qu'on la décoche, effet similaire à celui d'une flèche enduite d'huile enflammée.
+
+PARAMÈTRES :
+
+Dégâts : 1d6, +1d6 dégâts de feu (jet de sauvegarde contre les sorts pour annuler)
+Type de dégâts : projectile
+~
+@20120= ~Piège : flèche de glace~
+@20121= ~Ce piège contient les matériaux nécessaires pour lancer une flèche de glace quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche de glace : Ces flèches ont été enchantées de façon à se transformer en une énorme boule de glace et de froid dès qu'on les décoche. Quand elles frappent leur cible, celle-ci subit une vague de froid qui l'engourdit et la brûle entièrement.
+
+PARAMÈTRES :
+
+Dégâts : 1d6, +1d6 dégâts de froid
+Type de dégâts : projectile
+~
+@20122= ~Piège : flèche de glace~
+@20123= ~Ce piège contient les matériaux nécessaires pour lancer une flèche de glace quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche de glace : Ces flèches ont été enchantées de façon à se transformer en une énorme boule de glace et de froid dès qu'on les décoche. Quand elles frappent leur cible, celle-ci subit une vague de froid qui l'engourdit et la brûle entièrement.
+
+PARAMÈTRES :
+
+Dégâts : 1d6, +1d6 dégâts de froid (jet de sauvegarde contre les sorts pour annuler)
+Type de dégâts : projectile
+~
+@20130= ~Piège : flèche perforante~
+@20131= ~Ce piège contient les matériaux nécessaires pour lancer une flèche perforante quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche perforante : cette flèche est longue et fine, empreinte de propriétés magiques qui l'amènent à "continuer" au travers des armures et en direction du cœur de la victime.
+
+PARAMÈTRES :
+
+Dégâts : 1d6+6 (perforant)
+~
+@20132= ~Piège : flèche perforante~
+@20133= ~Ce piège contient les matériaux nécessaires pour lancer une flèche perforante quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Flèche perforante : cette flèche est longue et fine, empreinte de propriétés magiques qui l'amènent à "continuer" au travers des armures et en direction du cœur de la victime.
+
+PARAMÈTRES :
+
+Dégâts : 1d6 (projectile) +6 perforant (jet de sauvegarde contre la mort pour annuler)
+~
+@20140= ~Piège : Convocation de monstres I~
+@20141= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Convocation de monstres I  quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Convocation de monstres I
+(Conjuration/Convocation)
+
+Niveau : 3
+Portée : 36 mètres
+Durée : 2 rounds + 1 round par niveau
+Zone d'effet : spéciale
+Jet de sauvegarde : aucun
+
+Une fois l'incantation de ce sort terminée, le magicien convoque un ou plusieurs monstres possédant 3 dés de vie. Il y a 60 % de chances d'avoir un seul monstre, et 40 % de chances d'en avoir deux. Le ou les servants apparaissent dans la portée du sortilège et attaquent les ennemis du lanceur pour toute la durée du sort, ou jusqu'à leur mort.
+~
+@20150= ~Piège à givre~
+@20151= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Colonne de glace quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Colonne de glace
+(Evocation)
+
+Nivea : 5
+Portée : 30 m
+Durée : Instantanée
+Zone d'effet : 1 créature 
+Jet de sauvegarde : baguette, annule
+
+Une colonne de paillettes d'un blanc cristallin est envoyée avec une force fulgurante vers la victime, l'atteignant de plein fouet à la poitrine. Il fait à l'intérieur de la colonne une température mortelle qui inflige 8d6 points de dégâts qui peuvent être réduits de moitié par un jet de sauvegarde réussi contre les baguettes.
+~
+@20160= ~Piège : Nuage mortel~
+@20161= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Nuage mortel quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Nuage mortel
+(Invocation)
+
+Niveau : 5
+Portée : 12 mètres
+Durée : 1 tour 
+Zone d'effet : rayon de 4,50 mètres
+Jet de sauvegarde : spécial
+
+Ce sort génère un nuage de vapeurs jaune verdâtre tourbillonnantes, si toxique qu'il tue automatiquement toute créature possédant moins de 4 dés de vie, et oblige les créatures possédant de 5 à 6 dés de vie à lancer des jets de sauvegarde contre le poison (avec une pénalité de -4) ou à mourir. Retenir sa respiration n'empêche pas le sort d'agir. Les créatures ayant un niveau supérieur à 6 (ou 6 dés de vie) doivent quitter le nuage immédiatement ou subir 1d10 points de dégâts de poison à chaque round si elles restent dans la zone d'effet.
+~
+@20170= ~Piège : Éclair (mineur)~
+@20171= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Éclair de niveau 6 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Éclair
+(Invocation)
+
+Niveau : 3
+Portée : 21 m
+Durée : instantanée
+Zone d'effet : Chemin de l'éclair
+Jet de sauvegarde : demi-dégâts
+
+En lançant ce sort, le magicien libère une décharge électrique puissante qui inflige 1d6 points de dégâts par niveau du jeteur de sorts (dégâts maximum de 10d6) à chaque créature située dans la zone d'effet. Un jet de sauvegarde contre les sorts réussi permet de n'encaisser que la moitié des dégâts (arrondis à la fraction inférieure). Si l'éclair rencontre un mur, il rebondit jusqu'à ce qu'il atteigne sa longueur complète.
+~
+@20180= ~Piège à givre~
+@20181= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Colonne de glace quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Colonne de glace
+(Evocation)
+
+Nivea : 5
+Portée : 30 m
+Durée : Instantanée
+Zone d'effet : 1 créature 
+Jet de sauvegarde : baguette, annule
+
+Une colonne de paillettes d'un blanc cristallin est envoyée avec une force fulgurante vers la victime, l'atteignant de plein fouet à la poitrine. Il fait à l'intérieur de la colonne une température mortelle qui inflige 8d6 points de dégâts qui peuvent être réduits de moitié par un jet de sauvegarde réussi contre les baguettes.
+~
+@20182= ~Piège : fléchette infectée~
+@20183= ~Ce piège contient les matériaux nécessaires pour lancer une fléchette infectée quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Fléchette infectée : Cette fléchette a été infectée avec une maladie mortelle qui s'infiltre immédiatement dans le sang de la victime qu'elle atteint et provoque une mort rapide.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- La cible doit réussir un jet de sauvegarde contre la mort ou être contaminée de façon permanente par une maladie qui inflige 1 point de dégât par seconde.
+
+Dégâts : 1d3 (projectile)
+~
+@20190= ~Piège : fléchette sanglante~
+@20191= ~Ce piège contient les matériaux nécessaires pour lancer une fléchette sanglante quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Fléchette sanglante : Cette fléchette a été trempée dans un poison mortel qui s'infiltre immédiatement dans le sang de la victime qu'elle atteint et provoque une mort rapide.
+
+PARAMÈTRES:
+
+Capacités de combat :
+- La cible doit réussir un jet de sauvegarde contre la mort ou subir 4 points de dégâts du poison par seconde pendant 17 secondes.
+
+Dégâts : 1d3 (projectile)
+~
+//@20200= ~Underwater Bite~
+@20210= ~Piège à pieu (mineur)~
+@20211= ~Ce piège contient les matériaux nécessaires pour lancer un petit pieu quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+PARAMÈTRES:
+
+Dégâts : 1 (perforant)
+~
+//@20220= ~Muck Trap~//@20230= ~Shadow Death~//@20240= ~Guillotine~
+@20250= ~Piège : Orbe à éclairs III~
+@20251= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Chaîne d'éclairs de niveau 16 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Chaîne d'éclairs
+(Invocation/Évocation)
+
+Niveau : 6
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : spéciale
+Jet de sauvegarde : aucun
+
+Des éclairs jaillissent des doigts du magicien, sautant vers ses ennemis et les brûlant avec de l'électricité. L'éclair cause 1d6 de dégâts par deux niveaux du lanceur.
+~
+@20260= ~Piège : Orbe à éclairs II~
+@20261= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Chaîne d'éclairs de niveau 14 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Chaîne d'éclairs
+(Invocation/Évocation)
+
+Niveau : 6
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : spéciale
+Jet de sauvegarde : aucun
+
+Des éclairs jaillissent des doigts du magicien, sautant vers ses ennemis et les brûlant avec de l'électricité. L'éclair cause 1d6 de dégâts par deux niveaux du lanceur.
+~
+@20270= ~Piège : Orbe à éclairs I~
+@20271= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Chaîne d'éclairs de niveau 11 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Chaîne d'éclairs
+(Invocation/Évocation)
+
+Niveau : 6
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : spéciale
+Jet de sauvegarde : aucun
+
+Des éclairs jaillissent des doigts du magicien, sautant vers ses ennemis et les brûlant avec de l'électricité. L'éclair cause 1d6 de dégâts par deux niveaux du lanceur.
+~
+@20282= ~Piège : fléchette à poison paralysant~
+@20283= ~Ce piège contient les matériaux nécessaires pour lancer une fléchette à poison paralysant quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Fléchette à poison paralysant : Cette fléchette a été trempée dans un poison paralysant qui s'infiltre immédiatement dans le sang de la victime qu'elle atteint et provoque une mort rapide.
+
+PARAMÈTRES:
+
+Capacités de combat :
+- La cible doit réussir un jet de sauvegarde contre la mort ou subir 1 points de dégâts du poison par seconde pendant 4 rounds
+- .La cible doit réussir un jet de sauvegarde contre les sorts ou être paralysée pendant 4 rounds
+
+Dégâts : 1d3 (projectile)
+~
+@20292= ~Piège : fléchette à poison désorientant~
+@20293= ~Ce piège contient les matériaux nécessaires pour lancer une fléchette à poison désorientant quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+fléchette à poison désorientant : Cette fléchette a été trempée dans un poison désorientant qui s'infiltre immédiatement dans le sang de la victime qu'elle atteint et provoque des effets dévastateurs.
+
+PARAMÈTRES:
+
+Capacités de combat :
+- La cible doit réussir un jet de sauvegarde contre la mort à -4 ou subir 1 points de dégâts du poison par seconde pendant 4 rounds
+- .La cible doit réussir un jet de sauvegarde contre les sorts à 64 ou subir un effet de confusion pendant 4 rounds
+
+Dégâts : 1d3 (projectile)
+~
+@20302= ~Piège Brume mortelle~
+@20303= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Brume mortelle quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Brume mortelle
+(Invocation)
+
+Niveau : 6
+Portée : champ visuel du lanceur
+Durée : 15 rounds
+Zone d'effet : rayon de 3,6 m
+Jet de sauvegarde : spécial
+
+Ce sort crée une zone de brouillard opaque hautement acide. La brume épaisse limite les mouvements des créature à 50 % de leur vitesse normale. L'exposition au brouillard inflige des dégâts d'acide croissant au fil du temps :
+
+1er round : 4 points de dégâts
+2ème round : 8 points de dégâts
+3ème round  et suivants: 16 points de dégâts
+
+Tant qu'elle sont dans la brume, les créatures doivent réussir un jet de sauvegarde contre les sorts tous les rounds ou subit un malus de 2 points à la force et à la dextérité pendant ce round.
+~
+@20312= ~Piège : Doigt de mort~
+@20313= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Doigt de mort quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Doigt de mort
+(Nécromancie)
+
+Niveau : 7
+Portée : champ visuel du lanceur
+Durée : permanente
+Zone d'effet : 1 créature
+Jet de sauvegarde : spécial
+
+Le Doigt de mort absorbe la force vitale de la victime. Le lanceur doit pointer son doigt en direction de la victime une fois l'incantation terminée. Si la cible rate son jet de sauvegarde contre les sorts, elle est tuée instantanément. Dans le cas d'un jet de sauvegarde réussi, elle reçoit malgré tout 2d8 +1 dégâts. Les personnage tués par Doigt de mort ne peuvent être rappelés à la vie, ils sont morts de façon définitive.
+~
+@20322= ~Piège : Vapeur colorée~
+@20323= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Vapeur colorée de niveau 5 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Vapeur colorée
+(Transmutation)
+
+Niveau : 1
+Portée : 3,6 m
+Durée : instantanée
+Zone d'effet : arc de cercle de 90 degrés et de 9,6 m de long
+Jet de sauvegarde : spécial
+
+Grâce à ce sort, un éventail de couleurs vives jaillit de la main du magicien. Entre une et six créatures (1d6) situées dans la zone sont affectées dans l'ordre croissant de leur proximité au magicien. Toute créature de niveau 4 ou moins dans la zone d'effet doit réussir un jet de sauvegarde, sous peine de perdre connaissance.
+
+Grâce à ce sort, un éventail de couleurs vives jaillit de la main du magicien. Les créatures situées dans la zone sont affectées dans l'ordre croissant de leur proximité au magicien. Toutes les créatures dans la zone d'effet de niveau plus élevé que le lanceur ou de plus de 6 dés de vie doivent faire un jet de sauvegarde contre les sorts. Les effets du sort dépendent du niveau du lanceur. Les créatures de niveau/dés de vie inférieur ou égal à celui du lanceur sont inconscients pour 5 rounds et ne se réveillent pas quand elles sont frappées. Celles de un ou deux niveau/dés de vie de plus sont aveuglées pour 3 rounds et les autres créatures sont étourdies pour 1 round.
+~
+@20332= ~Piège : Projectile magique (majeur)~
+@20333= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Projectile magique de niveau 9 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Projectile magique
+(Invocation)
+
+Niveau : 1
+Portée : 10 m
+Durée : instantanée
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort permet de créer jusqu'à cinq projectiles d'énergie magique qui fusent du bout des doigts du magicien et frappent à coup sûr leur cible, qui doit être une créature. Contre les créatures, chaque projectile inflige 1d4+1 points de dégâts. Pour chaque tranche de deux niveaux supplémentaires d'expérience, le magicien remporte un nouveau projectile (il en a deux au 3ème niveau, trois au 5ème niveau, quatre au 7ème niveau et cinq au 9ème niveau).
+~
+@20342= ~Piège : Boule de feu (mineur)~
+@20343= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Boule de feu de niveau 7 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Boule de feu
+(Invocation)
+
+Niveau : 3
+Portée : 12 mètres
+Durée : instantanée
+Zone d'effet : rayon de 4,50 m
+Jet de sauvegarde : demi-dégâts
+
+Une Boule de feu est une explosion de flammes qui éclate avec un grondement sourd et engendre des dégâts proportionnels au niveau d'expérience du magicien : 1d6 points de dégâts par niveau d'expérience du jeteur de sorts (10d6 maximum). Le magicien pointe son doigt et annonce la distance et la hauteur à laquelle il veut faire exploser la Boule de feu. Un éclair jaillit du bout de son doigt et, à moins qu'il ne soit bloqué par un corps physique ou une barrière solide avant d'atteindre sa destination, se transforme en Boule de feu (un impact prématuré provoque une explosion prématurée). Les créatures qui ratent leur jet de sauvegarde contre les sorts subissent la totalité des dégâts. Celles qui le réussissent parviennent à bondir à l'écart, à se jeter à terre ou à rouler sur le côté, et n'encaissent que la moitié des dégâts.
+~
+@20352= ~Piège : Pétrification~
+@20353= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Pétrification quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Pétrification
+(Transmutation)
+
+Niveau : 6
+Portée : champ visuel du lanceur
+Durée : permanente
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Ce sort transforme toute forme de chair en pierre. Les possessions de la victime subissent le même sort. La cible reçoit un jet de sauvegarde contre les sorts pour résister aux effets de cette transformation. Si une statue crée de cette manière est sujette à n'importe quelle forme d'attaque, elle se brisera en morceaux rendant la transformation inverse impossible. La seule façon pour délivrer une victime de ce sort est de lancer sur elle le sort Transformation de la pierre en chair. Le sort fonctionne sue les morts-vivants de type cadavre (zombies, goules, etc.) mais pas sur les morts-vivants non-corporels ou squelettiques.
+~
+@20362= ~Piège : Horreur~
+@20363= ~Ce piège contient les matériaux nécessaires pour lancer un sort d'Horreur  quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Horreur
+(Nécromancie)
+
+Niveau : 2
+Portée : champ visuel du lanceur
+Durée : 1 tour
+Zone d'effet : rayon de 4,50 mètres 
+Jet de sauvegarde : annule
+
+Au moment du lancement de ce sort, toutes les créatures ennemies situées dans la zone d'effet doivent lancer des jets de sauvegarde contre les sorts ou prennent la fuite dans un état de panique. Certaines créatures sont immunisées contre les effets de la peur, notamment tous les morts-vivants.
+~
+@29340= ~Piège : BMain broyante de Bigby~
+@29341= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Main broyante de Bigby quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Main broyante de Bigby
+(Invocation)
+
+Niveau : 9
+Portée : 10,5 mètres
+Durée : 3 rounds
+Zone d'effet : 1 créature
+Jet de sauvegarde : spécial
+
+Ce sort fait apparaître un poing éthéré qui broie la cible et inflige 5d20 points de dégâts avant de disparaître.
+~
+@29500= ~Piège à crâne rapide~
+@29501= ~Ce piège contient les matériaux nécessaires pour lancer un sort de MPiège à crâne de niveau 7 quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Piège à crânes
+(Nécromancie)
+
+Niveau : 3
+Portée : 18 mètres
+Durée : jusqu'à déclenchement
+Zone d'effet : rayon de 3,60 mètres
+Jet de sauvegarde : aucun
+
+En jetant ce sort, le mage lance un crâne dans la zone visée. Le crâne flotte dans l'air jusqu'à ce qu'une créature s'en approche à moins de 2,40 mètres. Il explose alors, infligeant 1d6 points de dégâts par niveau du mage à toute créature présente dans un rayon de 3,60 mètres.
+~
+@36830= ~Piège : filet emmêlé~
+@36831= ~Ce piège contient les matériaux nécessaires pour lancer un filet emmêlé quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Filet emmêlé : envoie un filet sur une cible.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- La cible touchée doit réussir un jet de sauvegarde contre les sorts à -2 sous peine d'être sous un effet de toile pendant 2 rounds.
+~
+@37060= ~Piège : souffle~
+@37061= ~Ce piège contient les matériaux nécessaires pour émettre un souffle sous pression quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+PARAMÈTRES :
+
+Dégâts : 6d10 (perforant)
+~
+@37070= ~Piège : fléchette empoisonnée~
+@37071= ~Ce piège contient les matériaux nécessaires pour lancer plusieurs fléchettes empoisonnées quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Fléchette empoisonnée : Cette fléchette a été trempée dans un poison mortel qui s'infiltre immédiatement dans le sang de la victime qu'elle atteint et provoque des effets dévastateurs.
+
+PARAMÈTRES :
+
+Capacités de combat :
+- La cible doit réussir un jet de sauvegarde contre la mort ou subir 1 points de dégâts du poison par seconde pendant 5 rounds
+
+Dégâts : 4d6 (perforant)
+~
+@37080= ~Piège : vase~
+@37081= ~Ce piège contient les matériaux nécessaires pour projeter de la vase acide quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+PARAMÈTRES :
+
+Dégâts : 14d6 (acide)
+~
+@37090= ~Piège : lance~
+@37091= ~Ce piège contient les matériaux nécessaires pour projeter une lance quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+PARAMÈTRES :
+
+Dégâts : 10d6 (perforant)
+~
+@38650= ~Piège : Pétrification~
+@38651= ~Ce piège contient les matériaux nécessaires pour lancer un sort de Pétrification quand il est déclenché par un ennemi qui s'en approche à moins de 1,5 m.
+
+Pétrification
+(Transmutation)
+
+Niveau : 6
+Portée : champ visuel du lanceur
+Durée : permanente
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort transforme toute forme de chair en pierre. Les possessions de la victime subissent le même sort. Si une statue crée de cette manière est sujette à n'importe quelle forme d'attaque, elle se brisera en morceaux rendant la transformation inverse impossible. La seule façon pour délivrer une victime de ce sort est de lancer sur elle le sort Transformation de la pierre en chair. Le sort fonctionne sue les morts-vivants de type cadavre (zombies, goules, etc.) mais pas sur les morts-vivants non-corporels ou squelettiques.~

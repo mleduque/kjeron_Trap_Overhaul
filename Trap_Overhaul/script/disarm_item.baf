@@ -1,0 +1,15 @@
+IF
+    Disarmed([ANYONE])
+    !CheckStatLT(LastTrigger,%remove%,TRAPS)
+THEN
+    RESPONSE #100
+        TriggerActivation(Myself,FALSE)
+        GiveItemCreate("%itm%",LastTrigger,1,0,0)
+END
+IF
+    Disarmed([ANYONE])
+    CheckStatLT(LastTrigger,%remove%,TRAPS)
+THEN
+    RESPONSE #100
+        TriggerActivation(Myself,FALSE)
+END

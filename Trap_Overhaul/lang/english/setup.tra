@@ -1,0 +1,696 @@
+@0 = ~Trap Overhaul~
+@1 = ~Monk Evasion, Fast Detection, Recovery, Anyone OpenLocks~
+@2 = ~Monk Evasion, Fast Detection, Anyone OpenLocks~
+@3 = ~Monk Evasion, Recovery, Anyone OpenLocks~
+@4 = ~Fast Detection, Recovery, Anyone OpenLocks~
+@5 = ~Monk Evasion, Anyone OpenLocks~
+@6 = ~Fast Detection, Anyone OpenLocks~
+@7 = ~Recovery, Anyone OpenLocks~
+@8 = ~Anyone OpenLocks~
+@9 = ~Monk Evasion, Fast Detection, Recovery~
+@10 = ~Monk Evasion, Fast Detection~
+@11 = ~Monk Evasion, Recovery~
+@12 = ~Fast Detection, Recovery~
+@13 = ~Monk Evasion~
+@14 = ~Fast Detection~
+@15 = ~Recovery~
+
+@1000= ~Trap~
+@1001= ~%name_ref% Trap~
+@1002= ~This trap contains the necessary materials to launch a %name_ref% spell when triggered by an enemy creature within 4ft.
+
+%desc_ref%~
+@1003= ~Unknown~
+@1004= ~This trap contains the necessary materials to launch a weapon or spell when triggered by an enemy creature within 4ft.~
+@1005= ~Lock Pick Succeeded~
+@19010= ~Glyph of Wardning Trap~
+@19011= ~This trap contains the necessary materials to launch a level 9 Glyph of Warding spell when triggered by an enemy creature within 4ft.
+
+Glyph of Warding
+(Abjuration, Evocation)
+
+Level: 3
+Sphere: Protection
+Range: Visual range of the caster
+Duration: Special
+Area of Effect: 12-ft. radius
+Saving Throw: 1/2
+
+A glyph of warding is a powerful inscription, magically drawn to prevent unauthorized or hostile creatures from passing, entering, or opening. It can be used to guard a small bridge, to ward an entry, or as a trap on a chest or box. Any creature violating the warded area sets off the glyph. The glyph deals 1d4 points of electrical damage per level of the caster to the victim(s). A successful Save vs. Spell halves the damage. Leaving the area the glyph of warding is in will make it disappear harmlessly.~
+@19820= ~Dire Charm Trap~
+@19821= ~This trap contains the necessary materials to launch a Dire Charm spell when triggered by an enemy creature within 4ft.
+
+Dire Charm
+(Enchantment/Charm)
+
+Level: 0
+Range: 60 ft.
+Duration: 5 rounds
+Area of Effect: 1 creature
+Saving Throw: Neg. 
+
+This spell works in the exact same manner as Charm Person, with one difference: There is no Saving Throw bonus. Dire Charm affects any single person it is cast upon. The term person includes any bipedal human, demihuman, or humanoid of man-size or smaller, such as brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level fighter could be charmed, but an ogre could not. The person is allowed a Saving Throw vs. Spell to negate the effect.
+
+If the spell's recipient fails <PRO_HISHER> Saving Throw, <PRO_HESHE> regards the caster as a trusted friend and ally to be heeded and protected. The caster may give <PRO_HIMHER> orders, and the charmed individual will carry them out as quickly as possible.
+
+If the caster harms—or attempts to harm—the charmed person by some overt action, or if a Dispel Magic spell is cast upon the charmed person, the Dire Charm spell is broken. If two or more Charms simultaneously affect a creature, the most recent Charm takes precedence. Note that the subject has full memory of the events that took place while <PRO_HESHE> was charmed. Also note that you cannot have a charmed creature leave the area where <PRO_HESHE> is charmed.~
+@19830= ~Confusion Trap~
+@19831= ~This trap contains the necessary materials to launch a Confusion spell when triggered by an enemy creature within 4ft.
+
+Confusion
+(Enchantment/Charm)
+
+Level: 4
+Range: 35 ft.
+Duration: 5 rounds + 1 round/6 levels
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+This spell causes confusion in one or more enemy creatures within the area, creating indecision and the inability to take effective action. All enemy creatures within the area of effect are allowed Saving Throw vs. Spell with a -2 penalty. Those successfully saving are unaffected by the spell, whereas those who fail their Saving Throws will either go berserk, stand confused, or wander about for the duration of the spell. Wandering creatures move as far from the caster as possible, according to their most typical mode of movement (characters walk, fish swim, bats fly, etc.). Any confused creature that is attacked perceives the attacker as an enemy and acts according to its basic nature. The spell lasts for 5 rounds plus 1 round every 6 levels of the caster.~
+@19840= ~Chromatic Orb Trap~
+@19841= ~This trap contains the necessary materials to launch a Chromatic Orb spell when triggered by an enemy creature within 4ft.
+
+Chromatic Orb 
+(Evocation)
+
+Level: 1
+Range: 90 ft.
+Duration: Special
+Casting Time: 1
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell causes a 2-ft. diameter sphere to appear in the caster's hand. When thrown, the sphere heads unerringly to its target. The orb will deal 2d8 magic damage to the target against which there is no save and stun the victim for 2 turns against which the target must save vs. Spell with a +6 bonus.~
+@19842= ~Flame Strike Trap~
+@19843= ~This trap contains the necessary materials to launch a Flame Strike spell when triggered by an enemy creature within 4ft.
+
+Flame Strike
+(Evocation)
+
+Level: 5
+Sphere: Combat
+Range: Visual range of the caster
+Duration: Instant
+Area of Effect: 5-ft. radius
+Saving Throw: 1/2
+
+When the priest casts Flame Strike, a vertical column of fire roars downward onto a victim chosen by the caster. The spell deals 6d8 points of fire damage to the target and any nearby victims, with a Save vs. Spell for half damage.~
+@19850= ~Flame Strike Trap~
+@19851= ~This trap contains the necessary materials to launch a level 8 Flame Strike spell when triggered by an enemy creature within 4ft.
+
+Flame Strike
+(Evocation)
+
+Level: 5
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: 1/2 
+
+When the priest calls down a Flame Strike spell, a vertical column of fire roars downward in the exact location called for by the caster. The target must roll a Saving Throw vs. Spell. Failure means the creature sustains 1d8 points of damage per level of the caster; otherwise, the damage is halved.~
+@19860= ~Miscast Magic Trap~
+@19861= ~This trap contains the necessary materials to launch a Miscast Magic spell when triggered by an enemy creature within 4ft.
+
+Miscast Magic
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster 
+Duration: 1 turn
+Area of Effect: 1 target 
+Saving Throw: Neg. 
+
+Any spellcasting creature that is affected by this spell has its casting ability severely disabled. When the creature attempts to cast a spell, it suffers an 80% chance of failure. Creatures can save vs. Spell to avoid the effect, but do so with a -2 penalty.~
+@19870= ~Call Lightning Trap~
+@19871= ~This trap contains the necessary materials to launch a level 8 Call Lightning spell when triggered by an enemy creature within 4ft.
+
+Call Lightning
+(Alteration)
+
+Level: 3
+Range: 80 ft.
+Duration: 1 turn/4 levels
+Area of Effect: 360-ft. radius 
+Saving Throw: 1/2
+
+Call Lightning must be cast outside; otherwise, it will not work, and the spell is wasted. The caster is able to call down one bolt of lightning per turn. The spell has a duration of 1 turn every 4 levels of the caster. Each bolt causes 2d8 points of electrical damage, plus an additional 1d8 points per level of the caster. Thus, an 8th-level caster will call down two bolts, each dealing 10d8 (2d8 + 8d8) points of damage. The bolt of lightning flashes down in a vertical stroke at any of the priest's enemies. The first enemy struck by the lightning will be the enemy targeted. After that, any enemy (but no allies) may be struck by the ensuing lightning storm.~
+@19880= ~Silence Trap~
+@19881= ~This trap contains the necessary materials to launch a Silence spell when triggered by an enemy creature within 4ft.
+
+Silence
+(Alteration)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 2 rounds/level
+Area of Effect: 1 Creature
+Saving Throw: Neg. 
+
+Upon casting this spell, complete silence prevails over the targeted creature. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Saving Throw vs. Spell with a -5 penalty; if the save is failed then they are silenced for the duration of the spell. ~
+@19880= ~Silence, 15' Radius Trap~
+@19881= ~This trap contains the necessary materials to launch a Silence, 15' Radius spell when triggered by an enemy creature within 4ft.
+
+Silence, 15' Radius
+(Alteration)
+
+Level: 2
+Sphere: Guardian
+Range: Visual range of the caster
+Duration: 2 rounds/level
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+Upon casting this spell, complete silence prevails in the affected area. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Save vs. Spell; if the save is failed, they are silenced for the duration of the spell. Affected creatures leaving the area are still subject to the spell's effect; those entering the area after the casting is completed are not.~
+@19890= ~Hold Person Trap~
+@19891= ~This trap contains the necessary materials to launch a Hold Person spell when triggered by an enemy creature within 4ft.
+
+Hold Person
+(Enchantment/Charm)
+
+Level: 3
+Range: 35 ft.
+Duration: 1 turn
+Area of Effect: 1 creature
+Saving Throw: Neg. 
+
+This spell holds a single humanoid creature rigidly immobile and in place for five or more rounds. The Hold Person spell affects any bipedal human, demihuman, or humanoid of mansize or smaller, including brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level fighter could be held, while an ogre could not.  Those who save vs. Spell at -1 are totally unaffected by the spell. Undead creatures cannot be held.
+
+Held creatures cannot move or speak, but they remain aware of events around them and can use abilities not requiring motion or speech. Being held does not prevent the worsening of the subjects' condition due to wounds, disease, or poison.~
+@19892= ~Hold Person Trap~
+@19893= ~This trap contains the necessary materials to launch a level 8 Hold Person spell when triggered by an enemy creature within 4ft.
+
+Hold Person
+(Enchantment/Charm)
+
+Level: 3
+Range: Visual range of the caster
+Duration: 1 round/level
+Area of Effect: Special
+Saving Throw: Neg.
+
+This spell holds 1d4 humans, demihumans, or humanoid creatures immobile for 6 rounds or longer. Specifically, it affects the targeted enemy and up to 3 hostile creatures within 20 ft. of it. Affected creatures must be living bipedal humans, demihumans, and humanoids of man size or smaller, including dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, lizard men, orcs, troglodytes, and others. Thus, a 10th-level Fighter could be held, while an ogre could not. A successful Save vs. Spell negates the effect.
+
+Paralyzed creatures are helpless and cannot dodge or defend themselves from attacks. Being held does not prevent the worsening of the subject's condition due to wounds, disease, or poison.~
+@20010= ~Fireball Trap~
+@20011= ~This trap contains the necessary materials to launch a level 10 Fireball spell when triggered by an enemy creature within 4ft.
+
+Fireball
+(Evocation)
+
+Level: 3
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 15-ft. radius
+Saving Throw: 1/2 
+
+A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster (up to a maximum of 10d6). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their Saving Throws each suffer full damage from the blast. Those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each receiving half.~
+@20020= ~Lightning Bolt Trap~
+@20021= ~This trap contains the necessary materials to launch a level 10 Lightning Bolt spell when triggered by an enemy creature within 4ft.
+
+Lightning Bolt
+(Evocation) 
+
+Level: 3
+Range: 70 ft.
+Duration: Instant
+Area of Effect: Path of bolt
+Saving Throw: 1/2
+
+Upon casting this spell, the wizard releases a powerful stroke of electrical energy that inflicts 1d6 points of damage per level of the caster (maximum damage of 10d6) to each creature within its area of effect. A successful Saving Throw vs. Spell reduces this damage to half (round fractions down). If the lightning bolt intersects with a wall, it will bounce until it reaches its full length.~
+@20030= ~Magic Missile Trap~
+@20031= ~This trap contains the necessary materials to launch a level 5 Magic Missile spell when triggered by an enemy creature within 4ft.
+
+Magic Missile
+(Evocation)
+
+Level: 1
+Range: 30ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: None 
+
+Use of the Magic Missile spell, one of the most popular 1st-level spells, creates up to five missiles of magical energy that dart forth from the wizard's fingertip and unerringly strike their target, which must be a creature of some sort. Each missile inflicts 1d4+1 points of damage. For every 2 extra levels of experience, the wizard gains an additional missile—<PRO_HESHE> has 2 at 3rd level, 3 at 5th level, 4 at 7th level, up to a total of 5 at 9th level.~
+@20040= ~Stinking Cloud Trap~
+@20041= ~This trap contains the necessary materials to launch a Stinking Cloud spell when triggered by an enemy creature within 4ft.
+
+Stinking Cloud
+(Evocation)
+
+Level: 2
+Range: 90 ft.
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+When casting a Stinking Cloud spell, the wizard creates a billowing mass of nauseous vapors up to 90 ft. away from <PRO_HISHER> position. Any creature caught within the cloud must roll a successful Saving Throw vs. Poison at +2 or be sent reeling and fall down for 1d2 rounds. Those who make successful Saving Throws can leave the cloud without suffering any ill effects, although those remaining in the cloud must continue to save each round. A Dispel Magic will remove the nausea on a particular character, but if they remain in the cloud, then they are still subject to its effects.~
+@20050= ~Arrow of Piercing Trap~
+@20051= ~This trap contains the necessary materials to launch a Arrow of Piercing when triggered.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 2d6 (piercing)~
+@20060= ~Arrow of Slaying Trap~
+@20061= ~This trap contains the necessary materials to launch an Arrow of Slaying when triggered by an enemy creature within 4ft.
+
+Arrow of Slaying: This arrow is twisted and black, almost radiating evil as if possessed by something larger than itself. It was made to kill any type of creature.
+
+STATISTICS:
+
+Combat abilities:
+– Slay creature upon touch
+
+Damage: 1d6 (piercing)~
+@20062= ~Shocking Arrow Trap~
+@20063= ~This trap contains the necessary materials to launch an Shocking Arrow when triggered by an enemy creature within 4ft.
+
+Shocking Arrow: This arrow seems to crackle with energy as it is held in the hand. When shot, it seems to leap towards its target, leaving behind an electrical sulfuric smell. As it hits, there is a crackle as the energy stored is released into the target's wound.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +2d6 electrical damage~
+@20070= ~Acid Arrow Trap~
+@20071= ~This trap contains the necessary materials to launch an Acid Arrow when triggered by an enemy creature within 4ft.
+
+Acid Arrow: This arrow is coated in acid. When it strikes an enemy, it not only pierces flesh but also eats it away, enlarging and deepening the wound.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +2d6 acid damage~
+@20080= ~Arrow of Biting Trap~
+@20081= ~This trap contains the necessary materials to launch an Arrow of Biting when triggered by an enemy creature within 4ft.
+
+Arrow of Biting: The Arrow of Biting was designed as a deadly compliment to the archer. Poison smeared on the barbed arrowhead infiltrates the bloodstream of its victims, causing agony and often death.
+
+STATISTICS:
+
+Combat abilities:
+– Target must save vs. Death or lose 30% of its maximum Hit Points within 20 seconds
+
+Damage: 1d6 (missile)~
+@20090= ~Arrow of Detonation Trap~
+@20091= ~This trap contains the necessary materials to launch an Arrow of Detonation when triggered by an enemy creature within 4ft.
+
+Arrow of Detonation: This arrow has a particularly debilitating effect on its victims as, upon impact, it explodes into a huge ball of fire and shrapnel affecting all within the area.
+
+STATISTICS:
+
+Combat abilities:
+– 15ft. radius explosion on impact
+
+Damage: 1d6 (piercing), + 6d6 fire damage (Save vs. Spell for half)~
+@20092= ~Arrow of Detonating Trap~
+@20093= ~This trap contains the necessary materials to launch an Arrow of Detonating when triggered by an enemy creature within 4ft.
+
+Arrow of Detonating: This arrow has a particularly debilitating effect on its victims as, upon impact, it explodes into a small ball of fire and shrapnel within the target.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), + 6d6 fire damage (Save vs. Spell for half)~
+@20100= ~Arrow of Dispelling Trap~
+@20101= ~This trap contains the necessary materials to launch an Arrow of Dispelling when triggered by an enemy creature within 4ft.
+
+Arrow of Dispelling: This arrow will remove the magical enchantments that its victim is surrounded by.
+
+STATISTICS:
+
+Combat abilities:
+– Dispel Magic on target when hit
+
+Damage: 1d6 (piercing)~
+@20110= ~Arrow of Fire Trap~
+@20111= ~This trap contains the necessary materials to launch an Arrow of Fire when triggered by an enemy creature within 4ft.
+
+Arrow of Fire: This is a magical arrow that will burst into flames as it is fired at an enemy. The effect is similar to an arrow doused in oil and set to flame.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 fire damage (Save vs. Spell for none)~
+@20120= ~Arrow of Ice Trap~
+@20121= ~This trap contains the necessary materials to launch an Arrow of Ice when triggered by an enemy creature within 4ft.
+
+Arrow of Ice: This arrow is magically enhanced so as to burst into a rolling ball of ice and cold when fired. When the arrow strikes its victim, a shock of cold will travel through its body, both burning and numbing to the very core.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 cold damage~
+@20122= ~Arrow of Ice Trap~
+@20123= ~This trap contains the necessary materials to launch an Arrow of Ice when triggered by an enemy creature within 4ft.
+
+Arrow of Ice: This arrow is magically enhanced so as to burst into a rolling ball of ice and cold when fired. When the arrow strikes its victim, a shock of cold will travel through its body, both burning and numbing to the very core.
+
+STATISTICS:
+
+Damage: 1d6 (piercing), +1d6 cold damage (Save vs. Spell for none)~
+@20130= ~Arrow of Piercing Trap~
+@20131= ~This trap contains the necessary materials to launch an Arrow of Piercing when triggered by an enemy creature within 4ft.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 1d6+6 (piercing)~
+@20132= ~Arrow of Piercing Trap~
+@20133= ~This trap contains the necessary materials to launch an Arrow of Piercing when triggered by an enemy creature within 4ft.
+
+Arrow of Piercing: This arrow is long and thin, imbued with magical properties that allow it to "push" itself through armor, striking out towards the heart of the victim.
+
+STATISTICS:
+
+Damage: 1d6 (missile), +6 piercing (Save vs. Death for none)~
+@20140= ~Monster Summoning I Trap~
+@20141= ~This trap contains the necessary materials to launch a Monster Summoning I spell when triggered by an enemy creature within 4ft.
+
+Monster Summoning I 
+(Conjuration/Summoning)
+
+Level: 3
+Range: 120 ft. 
+Duration: 2 rounds + 1 round/level
+Area of Effect: Special 
+Saving Throw: None 
+
+With the casting of this spell, the wizard summons a random selection of 3-HD monsters. There is a 60% chance of receiving one monster and a 40% chance of receiving two monsters. The monster(s) appear within spell range and attack the spellcaster's opponents until the spell duration expires or until they are slain.~
+@20150= ~Frost Trap~
+@20151= ~This trap contains the necessary materials to launch a Column of Ice spell when triggered by an enemy creature within 4ft.
+
+Column of Ice
+(Evocation)
+
+Level: 5
+Range: 100 ft. 
+Duration: Instant
+Area of Effect: 1 creature 
+Saving Throw: Wand (Negate)
+
+White crystalline motes spray forth in a column towards the victim, striking them square in the chest with numbing force. The temperature inside the column is deadly, and damage is 16d3 with a Save vs. Wand for half.~
+@20160= ~Cloudkill Trap~
+@20161= ~This trap contains the necessary materials to launch a Cloudkill spell when triggered by an enemy creature within 4ft.
+
+Cloudkill
+(Evocation)
+
+Level: 5
+Range: 40 ft.
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Special
+
+This spell generates a billowing cloud of ghastly, yellowish green vapors that is so toxic as to slay any creature with 4 or fewer Hit Dice, and causes creatures with 5 to 6 Hit Dice to roll Saving Throws vs. Poison with a -4 penalty or be slain. Holding one's breath has no effect on the lethality of the spell. Those above 6th level (or 6 Hit Dice) must leave the cloud immediately or suffer 1d10 points of poison damage each round while in the area of effect.~
+@20170= ~Minor Lightning Bolt Trap~
+@20171= ~This trap contains the necessary materials to launch a level 6 Lightning Bolt spell when triggered by an enemy creature within 4ft.
+
+Lightning Bolt
+(Evocation) 
+
+Level: 3
+Range: 70 ft.
+Duration: Instant
+Area of Effect: Path of bolt
+Saving Throw: 1/2
+
+Upon casting this spell, the wizard releases a powerful stroke of electrical energy that inflicts 1d6 points of damage per level of the caster (maximum damage of 10d6) to each creature within its area of effect. A successful Saving Throw vs. Spell reduces this damage to half (round fractions down). If the lightning bolt intersects with a wall, it will bounce until it reaches its full length.~
+@20180= ~Frost Trap~
+@20181= ~This trap contains the necessary materials to launch a Column of Ice spell when triggered by an enemy creature within 4ft.
+
+Column of Ice
+(Evocation)
+
+Level: 5
+Range: 100 ft. 
+Duration: Instant
+Area of Effect: 1 creature 
+Saving Throw: Wand (Negate)
+
+White crystalline motes spray forth in a column towards the victim, striking them square in the chest with numbing force. The temperature inside the column is deadly, and damage is 16d3 with a Save vs. Wand for half.~
+@20182= ~Diseased Dart Trap~
+@20183= ~This trap contains the necessary materials to launch a Diseased Dart when triggered by an enemy creature within 4ft.
+
+Diseased Dart: This dart is coated in a deadly disease that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target is infected with disease (1 damage every second) permanently (Save vs. Death negates)
+
+Damage: 1d3 (piercing)~
+@20190= ~Dart of Wounding Trap~
+@20191= ~This trap contains the necessary materials to launch a Dart of Wounding when triggered by an enemy creature within 4ft.
+
+Dart of Wounding: This dart is coated in a deadly poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 4 poison damage every second for 17 rounds (Save vs. Death negates)
+
+Damage: 1d3 (piercing)~
+//@20200= ~Underwater Bite~
+@20210= ~Minor Spike Trap~
+@20211= ~This trap contains the necessary materials to launch a small spike when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 1 (piercing)~
+//@20220= ~Muck Trap~//@20230= ~Shadow Death~//@20240= ~Guillotine~
+@20250= ~Lightning Orb III Trap~
+@20251= ~This trap contains the necessary materials to launch a level 16 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+@20260= ~Lightning Orb II Trap~
+@20261= ~This trap contains the necessary materials to launch a level 14 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+@20270= ~Lightning Orb I Trap~
+@20271= ~This trap contains the necessary materials to launch a level 11 Chain Lightning spell when triggered by an enemy creature within 4ft.
+
+Chain Lightning 
+(Invocation/Evocation)
+
+Level: 1
+Range: 40 ft.
+Duration: Instant
+Area of Effect: Special 
+Saving Throw: none
+
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 1d6 points of damage for every 2 levels of the caster.~
+@20282= ~Paralytic Poison Dart Trap~
+@20283= ~This trap contains the necessary materials to launch a Paralytic Poison Dart when triggered by an enemy creature within 4ft.
+
+Paralytic Poison Dart: This dart is coated in a paralytic poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 4 rounds (Save vs. Death negates)
+– Hit target must save vs. Spell or be paralyzed for 4 rounds
+
+Damage: 1d3 (piercing)~
+@20292= ~Disorienting Poison Dart Trap~
+@20293= ~This trap contains the necessary materials to launch a Confusing Dart when triggered by an enemy creature within 4ft.
+
+Disorienting Poison Dart: This dart is coated in a disorienting poiosn that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 4 rounds (Save vs. Death at -4 negates)
+– Hit target must save vs. Spell at -4 or be confused for 4 rounds
+
+Damage: 1d3 (piercing)~
+@20302= ~Death Fog Trap~
+@20303= ~This trap contains the necessary materials to launch a Death Fog spell when triggered by an enemy creature within 4ft.
+
+Death Fog
+(Alteration, Evocation)
+
+Level: 6
+Range: Visual range of the caster
+Duration: 15 rounds
+Area of Effect: 12-ft. radius
+Saving Throw: Special
+
+This spell brings forth a billowing cloud of acidic fog. The thick fog limits movement to 50% of a creature's current movement rate. Exposure to the fog results in increasing amounts of acid damage over time as follows:
+
+1st round: 4 points of damage
+2nd round: 8 points of damage
+3rd round and later: 16 points of damage
+
+While in the fog, creatures must save vs. Spell every round or suffer -2 to Strength and Dexterity for the duration of that round.~
+@20312= ~Finger of Death Trap~
+@20313= ~This trap contains the necessary materials to launch a Finger of Death spell when triggered by an enemy creature within 4ft.
+
+Finger of Death
+(Necromancy)
+
+Level: 7
+Range: Visual range of the caster
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: Special
+
+The caster utters the Finger of Death incantation, points <PRO_HISHER> index finger at the creature to be slain, and unless the victim makes a Save vs. Spell, the victim dies instantly. Even if the save is successful, however, the brush with death still inflicts 2d8+1 points of magic damage. Characters slain by Finger of Death cannot be resurrected—they are gone forever.~
+@20322= ~Color Spray Trap~
+@20323= ~This trap contains the necessary materials to launch a level 5 Color Spray spell when triggered by an enemy creature within 4ft.
+
+Color Spray
+(Alteration)
+
+Level: 1
+Range: 12 ft.
+Duration: Instant
+Area of Effect: 29-ft. cone with 90-deg. arc
+Saving Throw: Special
+
+This spell creates a vivid, fan-shaped spray of clashing colors to spring forth from the caster's hand. Creatures within the area are affected in order of increasing distance from the wizard. All creatures in the area above the level of the caster or ones that have greater than 6 Hit Dice must make a Save vs. Spell. The spell's effects depend on the caster—creatures with Hit Dice/levels fewer than or equal to the caster are knocked unconscious (do not awaken when struck) for 5 rounds, those with Hit Dice/levels one or two greater than the wizard are blinded for 3 rounds, and any other creatures are stunned for 1 round.~
+@20332= ~Major Magic Missile Trap~
+@20333= ~This trap contains the necessary materials to launch a level 9 Magic Missile spell when triggered by an enemy creature within 4ft.
+
+Magic Missile
+(Evocation)
+
+Level: 1
+Range: 30ft.
+Duration: Instant
+Area of Effect: 1 creature
+Saving Throw: None 
+
+Use of the Magic Missile spell, one of the most popular 1st-level spells, creates up to five missiles of magical energy that dart forth from the wizard's fingertip and unerringly strike their target, which must be a creature of some sort. Each missile inflicts 1d4+1 points of damage. For every 2 extra levels of experience, the wizard gains an additional missile—<PRO_HESHE> has 2 at 3rd level, 3 at 5th level, 4 at 7th level, up to a total of 5 at 9th level.~
+@20342= ~Minor Fireball Trap~
+@20343= ~This trap contains the necessary materials to launch a level 7 Fireball spell when triggered by an enemy creature within 4ft.
+
+Fireball
+(Evocation)
+
+Level: 3
+Range: 40 ft.
+Duration: Instant
+Area of Effect: 15-ft. radius
+Saving Throw: 1/2 
+
+A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster (up to a maximum of 10d6). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their Saving Throws each suffer full damage from the blast. Those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each receiving half.~
+@20352= ~Flesh to Stone Trap~
+@20353= ~This trap contains the necessary materials to launch a Flesh to Stone spell when triggered by an enemy creature within 4ft.
+
+Flesh to Stone
+(Alteration)
+
+Level: 6
+Range: Visual range of the caster
+Duration: Permanent
+Area of Effect: 1 creature
+Saving Throw: Neg.
+
+This spell turns a creature to stone. The target is allowed a Save vs. Spell to avoid the effect. Petrification can be reversed with the 6th-level wizard spell Stone to Flesh. This spell works on cadaverous undead (i.e. zombies and ghouls), but not incorporeal and skeletal undead.~
+@20362= ~Horror Trap~
+@20363= ~This trap contains the necessary materials to launch a Horror spell when triggered by an enemy creature within 4ft.
+
+Horror
+(Necromancy)
+
+Level: 2
+Range: Visual range of the caster
+Duration: 1 turn
+Area of Effect: 15-ft. radius
+Saving Throw: Neg.
+
+All enemies within the area of effect must save vs. Spell or flee in terror. Certain creatures, such as undead, are immune to this spell.~
+@29340= ~Bigby's Crushing Hand Trap~
+@29341= ~This trap contains the necessary materials to launch a Bigby's Crushing Hand spell when triggered by an enemy creature within 4ft.
+
+Bigby's Crushing Hand
+(Evocation)
+
+Level: 9
+Range: 35 ft.
+Duration: 3 rounds
+Casting Time: 9
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell creates a distortion that crushes the target dealing 5d20 damage then disappearing.~
+@29500= ~Fast Skull Trap~
+@29501= ~This trap contains the necessary materials to launch a level 7 Skull Trap spell when triggered by an enemy creature within 4ft.
+
+Skull Trap
+(Necromancy)
+
+Level: 3
+Range: 60 ft.
+Duration: Special
+Area of Effect: 11-ft. radius
+Saving Throw: none
+
+When this spell is cast, a skull is thrown by the caster at the target area. The skull floats in the area until a creature comes within 8 ft. of it. When this happens, the skull is triggered and explodes damaging everyone within a 11-ft. radius. The damage inflicted is equal to 1d6 per level of the caster.~
+@36830= ~Tangle Web Trap~
+@36831= ~This trap contains the necessary materials to launch a tangle web when triggered by an enemy creature within 4ft.
+
+Tangle Web: Sprays a stream of webbing at one target.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target must save vs. Spell at -2 or be held by the webbing for 2 rounds~
+@37060= ~Venting Trap~
+@37061= ~This trap contains the necessary materials to launch a vent of gas when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 6d10 (piercing)~
+@37070= ~Poison Dart Trap~
+@37071= ~This trap contains the necessary materials to launch a series of Poison Darts when triggered by an enemy creature within 4ft.
+
+Poison Dart: These darts are coated in a deadly poison that will immediately seep into the bloodstream if striking an opponent, with very deadly results.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 poison damage every second for 5 rounds
+
+Damage: 4d6 (piercing)~
+@37080= ~Slime Trap~
+@37081= ~This trap contains the necessary materials to launch acidic slime when triggered by an enemy creature within 4ft.
+
+STATISTICS:
+
+Damage: 14d6 (acid)~
+@37090= ~Spear Trap~
+@37091= ~This trap contains the necessary materials to launch a spear when triggered by an enemy creature within 4ft.
+
+Spear: One of the earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end. When the civilized races mastered metals, spearheads were made from iron and steel. Having reached this end, weaponsmiths began experimenting with different types of spearheads, thus leading to the development of certain polearm types.
+
+STATISTICS:
+
+Damage: 10d6 (piercing)~
+@38650= ~Flesh to Stone Trap~
+@38651= ~This trap contains the necessary materials to launch a Flesh to Stone spell when triggered by an enemy creature within 4ft.
+
+Flesh to Stone
+(Alteration)
+
+Level: 6
+Range: Visual range of the caster
+Duration: Permanent
+Area of Effect: 1 creature
+Saving Throw: none
+
+This spell turns a creature to stone. Petrification can be reversed with the 6th-level wizard spell Stone to Flesh. This spell works on cadaverous undead (i.e. zombies and ghouls), but not incorporeal and skeletal undead.~

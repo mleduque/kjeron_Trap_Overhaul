@@ -1,0 +1,6 @@
+IF
+    Disarmed([ANYONE])
+THEN
+    RESPONSE #100
+        TriggerActivation(Myself,FALSE)
+END
