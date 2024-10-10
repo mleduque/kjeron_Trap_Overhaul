@@ -1,6 +1,6 @@
 	BACKUP ~weidu_backup\Trap_Overhaul~ 
 	AUTHOR ~none~ 
-	VERSION ~0.20~
+	VERSION ~0.21~
 	
 	ALWAYS
 		DEFINE_DIMORPHIC_FUNCTION	I2H	INT_VAR	int = 0	pad = 0	RET	hex	BEGIN
@@ -715,6 +715,26 @@ This spell turns a creature to stone. Petrification can be reversed with the 6th
 			>>>>>>>>	END	LOAD_TRA ~.../inlined.tra~
 			COPY_EXISTING	~ENGINEST.2DA~	override	SET_2DA_ENTRY 98 1 2 0	BUT_ONLY	IF_EXISTS
 			APPEND	~EA.IDS~ ~127 AREA_OBJECT~ UNLESS ~127[ %TAB%]+AREA_OBJECT~
+			APPEND	~OBJECT.IDS~	~95 NearestAllyOf~	UNLESS	NearestAllyOf
+			APPEND	~OBJECT.IDS~	~96 SecondNearestAllyOf~	UNLESS	SecondNearestAllyOf
+			APPEND	~OBJECT.IDS~	~97 ThirdNearestAllyOf~	UNLESS	ThirdNearestAllyOf
+			APPEND	~OBJECT.IDS~	~98 FourthNearestAllyOf~	UNLESS	FourthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~99 FifthNearestAllyOf~	UNLESS	FifthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~100 SixthNearestAllyOf~	UNLESS	SixthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~101 SeventhNearestAllyOf~	UNLESS	SeventhNearestAllyOf
+			APPEND	~OBJECT.IDS~	~102 EighthNearestAllyOf~	UNLESS	EighthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~103 NinthNearestAllyOf~	UNLESS	NinthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~104 TenthNearestAllyOf~	UNLESS	TenthNearestAllyOf
+			APPEND	~OBJECT.IDS~	~105 FarthestEnemyOf~	UNLESS	FarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~106 SecondFarthestEnemyOf~	UNLESS	SecondFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~107 ThirdFarthestEnemyOf~	UNLESS	ThirdFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~108 FourthFarthestEnemyOf~	UNLESS	FourthFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~109 FifthFarthestEnemyOf~	UNLESS	FifthFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~110 SixthFarthestEnemyOf~	UNLESS	SixthFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~111 SeventhFarthestEnemyOf~	UNLESS	SeventhFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~112 EighthFarthestEnemyOf~	UNLESS	EighthFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~113 NinthFarthestEnemyOf~	UNLESS	NinthFarthestEnemyOf
+			APPEND	~OBJECT.IDS~	~114 TenthFarthestEnemyOf~	UNLESS	TenthFarthestEnemyOf
 			DEFINE_PATCH_FUNCTION	GET_AREA_DATA	INT_VAR	section	= 0	RET	idx	RET_ARRAY	new	itemTrap	trapPRO BEGIN
 				SET	$new(~?~) = 1	SET	$itemTrap(~?~) = 1	SET	$trapPRO(~?~) = 1
 				PATCH_MATCH	section	WITH
@@ -1039,7 +1059,6 @@ This spell turns a creature to stone. Petrification can be reversed with the 6th
 						Continue()
 				END
 			>>>>>>>>
-			OUTER_SPRINT	unknown @1003
 			COPY_EXISTING_REGEXP	~^.+\.ARE$~	override
 				TEXT_SPRINT	area_name	~%SOURCE_RES%~	PATCH_PRINT	~ Processing: %SOURCE_RES%.ARE~	PATCH_SILENT
 				FOR	(section = 0; section < 3; ++section)	BEGIN
