@@ -1,0 +1,5 @@
+
+
+	LANGUAGE ~english~ ~english~ ~tra/english/string.tra~
+	LANGUAGE ~french~ ~french~ ~tra/english/string.tra~ ~tra/french/string.tra~
+

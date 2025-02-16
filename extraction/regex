@@ -1,0 +1,1 @@
+^(?<before_version>.*)VERSION\s+~(?<version>.*?)~\s*(?<before_tra>.*?)\s+ACTION_MATCH\s+~%EE_LANGUAGE%~\s+WITH\s+DEFAULT\s+<<<<<<<<\s+\.\.\./inlined\.tra(?<content>.*)>>>>>>>>\s+END\s+LOAD_TRA\s+~\.\.\./inlined\.tra~(?<end_always>.*)(?<first_begin>BEGIN\s+~Monk Evasion, Fast Detection, Recovery, Anyone OpenLocks~)(?<rest>.*)$
